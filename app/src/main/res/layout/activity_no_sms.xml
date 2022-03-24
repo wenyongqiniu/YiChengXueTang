@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_top_login"
+        android:layout_width="175dp"
+        android:layout_height="62dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/top_login" />
+
+    <TextView
+        android:id="@+id/tv_phone_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/iv_top_login"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="29dp"
+        android:background="@drawable/login_phone_shape"
+        android:gravity="center"
+        android:text="@string/phone_login"
+        android:textColor="#ffffffff"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_phone_login"
+        android:layout_centerHorizontal="true">
+
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/tv_phone_login"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="49dp"
+            android:background="@drawable/unchecked"
+            android:button="@null"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_i_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone_login"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="47dp"
+            android:layout_toEndOf="@id/check"
+            android:gravity="center"
+            android:text="@string/i_read"
+            android:textColor="#ff898989"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_service_xy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone_login"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="47dp"
+            android:layout_toEndOf="@id/tv_i_read"
+            android:text="@string/service_xy"
+            android:textColor="#FE8000"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_and"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone_login"
+            android:layout_marginTop="47dp"
+            android:layout_toEndOf="@id/tv_service_xy"
+            android:text="@string/and"
+            android:textColor="#ff898989"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_privacy_xy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone_login"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toEndOf="@id/tv_and"
+            android:text="@string/service_xy"
+            android:textColor="#FE8000"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/view_left"
+        android:layout_width="62dp"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="93dp"
+        android:background="#E1E1E1" />
+
+    <View
+        android:id="@+id/view_right"
+        android:layout_width="62dp"
+        android:layout_height="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="93dp"
+        android:background="#E1E1E1" />
+
+    <TextView
+        android:layout_width="104dp"
+        android:layout_height="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="85dp"
+        android:gravity="center"
+        android:text="@string/other_login"
+        android:textColor="#ff212121"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/iv_wx_login"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/wxlogin" />
+</RelativeLayout>

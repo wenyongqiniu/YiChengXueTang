@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">易橙学堂</string>
+    <string name="xy">请阅读并勾选下方协议</string>
+    <string name="phone_login">手机号码登录</string>
+    <string name="i_read">我已阅读并同意</string>
+    <string name="todo">TODO</string>
+    <string name="service_xy">《服务协议》</string>
+    <string name="and">和</string>
+    <string name="other_login">其他登录方式</string>
+    <string name="login_register">验证码登录/注册</string>
+    <string name="login_tips">未注册的手机号验证通过后将自动注册</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="input_vc_code">请输入验证码</string>
+    <string name="get_vc_vode">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="use_password">使用密码登录</string>
+    <string name="input_correct_phone">请输入正确的手机号</string>
+    <string name="password_login_text">密码登录</string>
+    <string name="input_password">请输入密码</string>
+    <string name="forget_password">忘记密码？</string>
+    <string name="alreday_registered">密码登录仅适用于已注册的用户</string>
+    <string name="reset_password">重置密码</string>
+    <string name="change_password_tips">重置成功后，原密码将即时失效</string>
+    <string name="next_step">下一步</string>
+    <string name="make_sure">确定</string>
+    <string name="login_failed">登陆失败</string>
+    <string name="binding_wechat">绑定微信</string>
+    <string name="binding_wecaht_tips">绑定微信，后续所有信息将围绕该账号所开展</string>
+    <string name="bind_now">立即绑定</string>
+    <string name="binding_wechat_tips2">如退出流程，则代表注册流程失败，请谨慎操作</string>
+    <string name="password_rule">密码需大于8位字母或数字</string>
+    <string name="vccode_rule">验证码错误</string>
+    <declare-styleable name="DefaultView">
+        <!--加载中页-->
+        <attr name="load_layout" format="reference" />
+        <!--加载错误页-->
+        <attr name="error_layout" format="reference" />
+        <!--加载空页-->
+        <attr name="empty_layout" format="reference" />
+    </declare-styleable>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="experience_class">体验课</string>
+    <string name="advanced_course">进阶课</string>
+    <string name="live_course">直播课</string>
+    <string name="come_in">进入</string>
+    <string name="no_lesson_tips">您还没有购买课程，购买后可以开始学习</string>
+    <string name="sign_the_contract">签署合同</string>
+    <string name="sign_contract_tips">您已购买课程，补充合同后才可以开始上课</string>
+
+</resources>
