@@ -22,7 +22,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:background="@drawable/live_course_shape"
+            android:background="@mipmap/live"
             android:gravity="center"
             android:textColor="#FE8000"
             android:id="@+id/tv_live_course"
@@ -31,7 +31,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="3dp"
-            android:text="@string/live_course" />
+            />
 
         <TextView
             android:id="@+id/tv_day"
@@ -56,8 +56,7 @@
             android:textColor="#ff545454"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv_come_in"
+        <RelativeLayout
             android:layout_width="71dp"
             android:layout_height="27dp"
             android:layout_below="@id/tv_day"
@@ -65,11 +64,22 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="19dp"
-            android:background="@drawable/login_phone_shape"
-            android:gravity="center"
-            android:text="@string/come_in"
-            android:textColor="#ffffffff"
-            android:textSize="13sp" />
+            android:background="@drawable/login_phone_shape">
+
+            <TextView
+                android:drawablePadding="5dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_come_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/come_in"
+                android:textColor="#ffffffff"
+                android:textSize="13sp"
+                app:drawableEndCompat="@mipmap/arrow_right" />
+        </RelativeLayout>
+
+
     </RelativeLayout>
 
 

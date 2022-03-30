@@ -1,9 +1,12 @@
 package com.example.yichengxuetang.fragments;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.llw.mvplibrary.mvp.MvpFragment;
 import com.stx.xhb.xbanner.XBanner;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +74,8 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                 toMyTextView.setText(courseTypeList.get(i).getName());
             }
             TextView toMyTextView = mTabLayout.getTabAt(0).getCustomView().findViewById(R.id.tv_top_item);
+            View tab_item_indicator = mTabLayout.getTabAt(0).getCustomView().findViewById(R.id.tab_item_indicator);
+            tab_item_indicator.setVisibility(View.VISIBLE);
             toMyTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             toMyTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             toMyTextView.setTextColor(Color.parseColor("#2A2A2A"));
@@ -85,7 +91,9 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                     tv.setText(courseTypeList.get(position).getName());
                     tv.setTextColor(Color.parseColor("#2A2A2A"));
                     tv.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
-                    tv.setTextSize(20);//直接用setTextSize(22)也一样
+                    tv.setTextSize(20);
+                    View tab_item_indicator = mTabLayout.getTabAt(position).getCustomView().findViewById(R.id.tab_item_indicator);
+                    tab_item_indicator.setVisibility(View.VISIBLE);
                     tv.invalidate();
                     Bundle bundle = new Bundle();
                     bundle.putString("typeCode", courseTypeList.get(position).getType()+"");
@@ -100,6 +108,8 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                     tv.setText(courseTypeList.get(position).getName());
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
                     tv.setTextColor(Color.parseColor("#B5B5B5"));
+                    View tab_item_indicator = mTabLayout.getTabAt(position).getCustomView().findViewById(R.id.tab_item_indicator);
+                    tab_item_indicator.setVisibility(View.INVISIBLE);
                     tv.invalidate();
                     tab.getCustomView().findViewById(R.id.tv_top_item).setSelected(false);
                 }
@@ -109,8 +119,6 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
 
                 }
             });
-
-
         }
         hideLoadingDialog();
 

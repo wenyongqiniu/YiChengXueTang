@@ -1,8 +1,9 @@
 package com.example.yichengxuetang.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ShowCourseListResponse {
+public class ShowCourseListResponse implements Serializable {
 
     /**
      * code : 0
@@ -10,7 +11,7 @@ public class ShowCourseListResponse {
      * data : {"xbCourseList":[{"packageId":"202008201946481588","courseId":"531847770749244411","classId":"558619293577134667","courseName":"淘宝无货源训练营","courseType":0,"currentDay":0,"totalDay":5,"customerNum":0}],"bigCourse":{"contractStatus":1,"selectClassStatus":1,"addressStatus":1,"showTeacherStatus":1,"startTime":"2022-03-26","packageName":"淘宝无货源赚钱技能课","className":"2期1班","teacherQrCode":"https://image.xicaishe.com/20220218151823EmWE41pu.jpg","bigCourseList":[{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]}}
      */
 
-    private int code;
+    private Integer code;
     private String message;
     /**
      * xbCourseList : [{"packageId":"202008201946481588","courseId":"531847770749244411","classId":"558619293577134667","courseName":"淘宝无货源训练营","courseType":0,"currentDay":0,"totalDay":5,"customerNum":0}]
@@ -19,11 +20,11 @@ public class ShowCourseListResponse {
 
     private DataBean data;
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -43,7 +44,7 @@ public class ShowCourseListResponse {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * contractStatus : 1
          * selectClassStatus : 1
@@ -86,15 +87,25 @@ public class ShowCourseListResponse {
             this.xbCourseList = xbCourseList;
         }
 
-        public static class BigCourseBean {
-            private int contractStatus;
-            private int selectClassStatus;
-            private int addressStatus;
-            private int showTeacherStatus;
+        public static class BigCourseBean implements Serializable{
+            private Integer contractStatus;
+            private Integer selectClassStatus;
+            private Integer addressStatus;
+            private Integer showTeacherStatus;
             private String startTime;
             private String packageName;
             private String className;
             private String teacherQrCode;
+            private String packageId;
+
+            public String getPackageId() {
+                return packageId;
+            }
+
+            public void setPackageId(String packageId) {
+                this.packageId = packageId;
+            }
+
             /**
              * courseId : 533305521744614302
              * courseName : 淘宝无货源赚钱技能课
@@ -102,37 +113,38 @@ public class ShowCourseListResponse {
              * coverImage : https://image.xicaishe.com/20220111175303cXnn5ERQ.png
              */
 
+
             private List<BigCourseListBean> bigCourseList;
 
-            public int getContractStatus() {
+            public Integer getContractStatus() {
                 return contractStatus;
             }
 
-            public void setContractStatus(int contractStatus) {
+            public void setContractStatus(Integer contractStatus) {
                 this.contractStatus = contractStatus;
             }
 
-            public int getSelectClassStatus() {
+            public Integer getSelectClassStatus() {
                 return selectClassStatus;
             }
 
-            public void setSelectClassStatus(int selectClassStatus) {
+            public void setSelectClassStatus(Integer selectClassStatus) {
                 this.selectClassStatus = selectClassStatus;
             }
 
-            public int getAddressStatus() {
+            public Integer getAddressStatus() {
                 return addressStatus;
             }
 
-            public void setAddressStatus(int addressStatus) {
+            public void setAddressStatus(Integer addressStatus) {
                 this.addressStatus = addressStatus;
             }
 
-            public int getShowTeacherStatus() {
+            public Integer getShowTeacherStatus() {
                 return showTeacherStatus;
             }
 
-            public void setShowTeacherStatus(int showTeacherStatus) {
+            public void setShowTeacherStatus(Integer showTeacherStatus) {
                 this.showTeacherStatus = showTeacherStatus;
             }
 
@@ -176,10 +188,10 @@ public class ShowCourseListResponse {
                 this.bigCourseList = bigCourseList;
             }
 
-            public static class BigCourseListBean {
+            public static class BigCourseListBean implements Serializable{
                 private String courseId;
                 private String courseName;
-                private int studyStatus;
+                private Integer studyStatus;
                 private String coverImage;
 
                 public String getCourseId() {
@@ -198,11 +210,11 @@ public class ShowCourseListResponse {
                     this.courseName = courseName;
                 }
 
-                public int getStudyStatus() {
+                public Integer getStudyStatus() {
                     return studyStatus;
                 }
 
-                public void setStudyStatus(int studyStatus) {
+                public void setStudyStatus(Integer studyStatus) {
                     this.studyStatus = studyStatus;
                 }
 
@@ -221,10 +233,10 @@ public class ShowCourseListResponse {
             private String courseId;
             private String classId;
             private String courseName;
-            private int courseType;
-            private int currentDay;
-            private int totalDay;
-            private int customerNum;
+            private Integer courseType;
+            private Integer currentDay;
+            private Integer totalDay;
+            private Integer customerNum;
 
             public String getPackageId() {
                 return packageId;
@@ -258,35 +270,35 @@ public class ShowCourseListResponse {
                 this.courseName = courseName;
             }
 
-            public int getCourseType() {
+            public Integer getCourseType() {
                 return courseType;
             }
 
-            public void setCourseType(int courseType) {
+            public void setCourseType(Integer courseType) {
                 this.courseType = courseType;
             }
 
-            public int getCurrentDay() {
+            public Integer getCurrentDay() {
                 return currentDay;
             }
 
-            public void setCurrentDay(int currentDay) {
+            public void setCurrentDay(Integer currentDay) {
                 this.currentDay = currentDay;
             }
 
-            public int getTotalDay() {
+            public Integer getTotalDay() {
                 return totalDay;
             }
 
-            public void setTotalDay(int totalDay) {
+            public void setTotalDay(Integer totalDay) {
                 this.totalDay = totalDay;
             }
 
-            public int getCustomerNum() {
+            public Integer getCustomerNum() {
                 return customerNum;
             }
 
-            public void setCustomerNum(int customerNum) {
+            public void setCustomerNum(Integer customerNum) {
                 this.customerNum = customerNum;
             }
         }

@@ -16,6 +16,7 @@
         android:layout_height="106dp"/>
 
     <com.google.android.material.tabs.TabLayout
+        app:tabIndicatorHeight="0dp"
         app:tabBackground="@color/white"
         app:tabIndicatorFullWidth="false"
         app:tabMode="fixed"

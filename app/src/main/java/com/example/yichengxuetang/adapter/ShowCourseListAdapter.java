@@ -1,7 +1,6 @@
 package com.example.yichengxuetang.adapter;
 
 import android.text.Html;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
@@ -29,6 +28,5 @@ public class ShowCourseListAdapter extends BaseQuickAdapter<ShowCourseListRespon
         baseViewHolder.setText(R.id.tv_sign_up, showCourseListResponse.getCustomerNum() + "人已报名");
 
     }
-
 
 }

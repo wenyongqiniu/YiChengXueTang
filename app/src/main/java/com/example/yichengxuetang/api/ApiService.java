@@ -1,26 +1,29 @@
 package com.example.yichengxuetang.api;
 
 
+import com.example.yichengxuetang.bean.AddAddressResponse;
+import com.example.yichengxuetang.bean.AddressListResponse;
+import com.example.yichengxuetang.bean.AddressResponse;
 import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.CheckVcCodeResponse;
+import com.example.yichengxuetang.bean.ConfirmCourseTineResponse;
+import com.example.yichengxuetang.bean.ContractResponse;
+import com.example.yichengxuetang.bean.CourseTimeResponse;
+import com.example.yichengxuetang.bean.DakeStepResponse;
 import com.example.yichengxuetang.bean.GetPhoneResponse;
 import com.example.yichengxuetang.bean.GetVcCodeResponse;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.bean.ResetPasswordResponse;
+import com.example.yichengxuetang.bean.SealContractResponse;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
 import com.example.yichengxuetang.bean.VcLoginResponse;
 import com.example.yichengxuetang.bean.WallPaperResponse;
-
-import java.util.Base64;
-import java.util.function.DoubleUnaryOperator;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
@@ -40,7 +43,7 @@ public interface ApiService {
     /**
      * 获取验证码
      *
-     * @param phone
+     *
      */
     @POST("api/common/sendSmsCode")
     Observable<VcLoginResponse> getVcResponse(@Body RequestBody response);
@@ -76,6 +79,41 @@ public interface ApiService {
     //首页-查询课程列表
     @POST("api/studycenter/getCourse")
     Observable<ShowCourseListResponse> getShowCourseListCenter(@Body RequestBody body);
+
+    //getContract
+    @POST("api/studycenter/getProcessPageInfo")
+    Observable<DakeStepResponse> getDakeStep(@Body RequestBody body);
+
+    //合同-查询合同模板
+    @POST("api/studycenter/getContractTemlate")
+    Observable<ContractResponse> getContract(@Body RequestBody body);
+
+    //合同-签署合同
+    @POST("api/studycenter/sealContract")
+    Observable<SealContractResponse> getSealContract(@Body RequestBody body);
+
+    //地址-查询用户是否有地址
+    @POST("api/studycenter/getAddress")
+    Observable<AddressResponse> getAddress(@Body RequestBody body);
+
+    //地址-新增地址
+    @POST("api/studycenter/addAddress")
+    Observable<AddAddressResponse> getEditAddress(@Body RequestBody body);
+
+    //地址-新增地址
+    @POST("api/studycenter/editAddress")
+    Observable<AddAddressResponse> getChangeAddress(@Body RequestBody body);
+
+    //地址-查询地址列表
+    @POST("api/studycenter/getAddressList")
+    Observable<AddressListResponse> getAddressList(@Body RequestBody body);
+
+    //选时间-查询可用时间
+    @POST("api/studycenter/getCouseTime")
+    Observable<CourseTimeResponse> getCourseTime(@Body RequestBody body);
+    //选时间-选择时间
+    @POST("api/studycenter/selectCourseTime")
+    Observable<ConfirmCourseTineResponse> getSelecttime(@Body RequestBody body);
 
 
 }

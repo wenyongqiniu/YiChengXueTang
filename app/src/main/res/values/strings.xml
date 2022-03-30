@@ -30,15 +30,6 @@
     <string name="binding_wechat_tips2">如退出流程，则代表注册流程失败，请谨慎操作</string>
     <string name="password_rule">密码需大于8位字母或数字</string>
     <string name="vccode_rule">验证码错误</string>
-    <declare-styleable name="DefaultView">
-        <!--加载中页-->
-        <attr name="load_layout" format="reference" />
-        <!--加载错误页-->
-        <attr name="error_layout" format="reference" />
-        <!--加载空页-->
-        <attr name="empty_layout" format="reference" />
-    </declare-styleable>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="experience_class">体验课</string>
     <string name="advanced_course">进阶课</string>
@@ -46,6 +37,40 @@
     <string name="come_in">进入</string>
     <string name="no_lesson_tips">您还没有购买课程，购买后可以开始学习</string>
     <string name="sign_the_contract">签署合同</string>
-    <string name="sign_contract_tips">您已购买课程，补充合同后才可以开始上课</string>
+    <string name="fill_in_address">填写收货地址</string>
+    <string name="select_time">选择开课时间</string>
+    <string name="sign_contract_tips">签署合同后才可以开始上课</string>
+    <string name="fill_in_address_tips">请填写您的收货地址</string>
+    <string name="select_appropriate_time">请选择合适的开课时间</string>
+    <string name="now_sign">去签署</string>
+    <string name="now_fill_in">去填写</string>
+    <string name="now_select">去选择</string>
+    <string name="title_contract">课程服务合同</string>
+    <string name="party_a">甲方：</string>
+    <string name="title_address">通讯地址:</string>
+    <string name="party_b">乙方：</string>
+    <string name="party_b_id">身份证号：</string>
+    <string name="phone">联系电话：</string>
+    <string name="commit_success">提交成功</string>
+    <string name="no_address">为了您能够及时收到教材，不影响学习进度，请务必补充正确的地址信息。因个人填写失误导致的后续问题，本公司概不负责。</string>
+    <string name="receiving_address">收货地址</string>
+    <string name="no_address_tips">暂无地址</string>
+    <string name="use_other_address">使用其他地址</string>
+    <string name="delete">删除</string>
+    <string name="receiver">收货人</string>
+    <string name="receiver_name">请填写收货人姓名</string>
+    <string name="phone_number">手机号码</string>
+    <string name="area">所在区域</string>
+    <string name="input_receiver_number">请填写收货人手机号</string>
+    <string name="area_des">省市区县、乡镇等</string>
+    <string name="detail_address">详细地址</string>
+    <string name="address_des">街道、楼牌号等</string>
+    <string name="set_default_address">设为默认地址</string>
+    <string name="set_default_tips">提醒：快递会优先使用该地址</string>
+    <string name="keep_and_use">保存并使用</string>
+    <string name="fill_complete">请填写完整信息</string>
+    <string name="create_address">新建收货地址</string>
+    <string name="start_time">开课时间</string>
+    <string name="full_already">已满</string>
 
 </resources>

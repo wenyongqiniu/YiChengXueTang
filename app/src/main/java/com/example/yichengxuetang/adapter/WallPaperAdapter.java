@@ -25,7 +25,5 @@ public class WallPaperAdapter extends BaseQuickAdapter<WallPaperResponse.ResBean
     @Override
     protected void convert(BaseViewHolder helper, WallPaperResponse.ResBean.VerticalBean item) {
         ImageView imageView = helper.getView(R.id.image);
-       /* Glide.with(mContext).load(item.getImg()).into(imageView);
-        imageView.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, VideoActivity.class)));*/
     }
 }

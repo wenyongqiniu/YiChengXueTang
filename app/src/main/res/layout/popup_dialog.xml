@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -19,11 +21,11 @@
             android:id="@+id/common_dialog_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="34dp"
             android:gravity="center_horizontal"
-            android:textColor="#555555"
-            android:textSize="18sp"
-            tools:text="标题" />
+            android:textColor="#434343"
+            android:textSize="15sp"
+            tools:text="是否选择该时间上课" />
     </RelativeLayout>
 
     <TextView
@@ -36,47 +38,44 @@
         android:gravity="center"
         android:maxLines="5"
         android:minHeight="25dp"
-        android:textColor="#555555"
-        android:textSize="14sp"
+        android:textColor="#FE8000"
+        android:textSize="16sp"
         tools:text="信息" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F5F5F5" />
 
     <LinearLayout
+        android:layout_marginBottom="25dp"
         android:id="@+id/common_dialog_bottom_ll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/dialog_cancle_shape"
             android:id="@+id/common_dialog_cancel_tv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="#0679FE"
+            android:textColor="#FE8000"
             android:textSize="18sp"
             tools:text="取消"
             android:focusable="true" />
 
-        <View
-            android:id="@+id/common_dialog_vertical_line"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#F5F5F5" />
 
         <TextView
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/dialog_sure_shape"
             android:id="@+id/common_dialog_confirm_tv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="#0679FE"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             tools:text="确定"
             android:focusable="true" />

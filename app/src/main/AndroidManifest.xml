@@ -6,9 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
 
     <queries>
@@ -16,15 +17,18 @@
     </queries>
 
     <application
-        android:hardwareAccelerated="true"
         android:name=".application.MyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activitys.learningactivitys.OtherAddressActivity"></activity>
+        <activity android:name=".activitys.learningactivitys.EditActivity" />
+        <activity android:name=".activitys.learningactivitys.DakeStepActivity" />
         <activity android:name=".activitys.logins.BindingWechatActivity" />
         <activity
             android:name=".wxapi.WXEntryActivity"

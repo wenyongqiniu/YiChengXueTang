@@ -14,5 +14,16 @@
         android:textColor="#B5B5B5"
         android:gravity="center"/>
 
+    <View
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_top_item"
+        android:id="@+id/tab_item_indicator"
+        android:layout_width="30dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_phone_shape"
+        android:visibility="invisible"
+        />
+
 
 </RelativeLayout>

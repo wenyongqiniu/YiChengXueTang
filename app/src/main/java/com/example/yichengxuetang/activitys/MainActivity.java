@@ -22,6 +22,7 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
+
         //显示加载弹窗
         showLoadingDialog();
         //初始化列表
@@ -34,15 +35,17 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
     private void initView() {
         BottomBar bottomBar = findViewById(R.id.bottom_navigation);
         bottomBar.setContainer(R.id.fl_container)
-                .setTitleBeforeAndAfterColor("#999999", "#ff5d5e")
+                .setTitleSize(10)
+                .setTitleIconMargin(8)
+                .setTitleBeforeAndAfterColor("#8E8F90", "#FE8000")
                 .addItem(LearningCenterFragment.class,
-                        "学习中心", R.drawable.logo, R.drawable.logo)
+                        "学习中心", R.mipmap.no_learning_center, R.mipmap.learning_center)
                 .addItem(DiscoverFragment.class,
-                        "发现", R.drawable.logo, R.drawable.logo)
+                        "发现", R.mipmap.no_discover, R.mipmap.discover)
                 .addItem(QuestionBankFragment.class,
-                        "题库", R.drawable.logo, R.drawable.logo)
+                        "题库", R.mipmap.no_question_bank, R.mipmap.question_bank)
                 .addItem(MineFragment.class,
-                        "我的", R.drawable.logo, R.drawable.logo)
+                        "我的", R.mipmap.no_mine, R.mipmap.mine)
                 .build();
         hideLoadingDialog();
     }
