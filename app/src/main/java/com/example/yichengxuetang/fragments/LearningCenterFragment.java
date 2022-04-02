@@ -17,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.contract.LearningCenterContract;
+import com.example.yichengxuetang.utils.MyTabLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.llw.mvplibrary.mvp.MvpFragment;

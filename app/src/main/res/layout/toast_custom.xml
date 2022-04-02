@@ -8,7 +8,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/dialog_shape">
+        android:background="@drawable/toast_shape">
 
         <ImageView
             android:id="@+id/iv_warm"

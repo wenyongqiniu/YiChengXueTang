@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 
 import com.example.yichengxuetang.R;
+import com.example.yichengxuetang.activitys.logins.LoginActivity;
 import com.example.yichengxuetang.bean.WallPaperResponse;
 import com.example.yichengxuetang.contract.MainContract;
 import com.example.yichengxuetang.fragments.DiscoverFragment;
@@ -11,8 +12,12 @@ import com.example.yichengxuetang.fragments.LearningCenterFragment;
 import com.example.yichengxuetang.fragments.MineFragment;
 import com.example.yichengxuetang.fragments.QuestionBankFragment;
 import com.example.yichengxuetang.utils.BottomBar;
+import com.llw.mvplibrary.ActivityManager;
+import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.KLog;
+
+import cn.jiguang.verifysdk.api.JVerificationInterface;
 
 
 /**
@@ -22,7 +27,10 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        BaseApplication.getActivityManager().finishActivity(LoginActivity.class);
+        JVerificationInterface.dismissLoginAuthActivity(true, (code, desc) -> {
 
+        });
         //显示加载弹窗
         showLoadingDialog();
         //初始化列表

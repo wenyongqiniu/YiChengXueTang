@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:layout_marginTop="25dp"
             android:id="@+id/tv_experience_class"
             android:layout_width="54dp"
             android:layout_height="25dp"
@@ -18,6 +19,32 @@
             android:text="@string/experience_class"
             android:textColor="#ff2a2a2a"
             android:textSize="18sp" />
+
+        <RelativeLayout
+            android:visibility="invisible"
+            android:id="@+id/rl_no_data_x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_experience_class"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/iv_no_data_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/no_data" />
+
+            <TextView
+                android:layout_width="234dp"
+                android:layout_height="19dp"
+                android:layout_below="@id/iv_no_data_x"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="19dp"
+                android:text="@string/no_lesson_tips"
+                android:textColor="#ffababab"
+                android:textSize="13sp" />
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_experience_class"
@@ -44,6 +71,7 @@
             android:layout_below="@id/tv_advanced_course"
             android:layout_marginTop="11dp" />
 
+
         <RelativeLayout
             android:visibility="visible"
             android:id="@+id/rl_dk_step"
@@ -56,8 +84,9 @@
             android:background="@drawable/rl_contract">
 
             <TextView
+                android:layout_marginEnd="50dp"
                 android:id="@+id/tv_sign_the_contract"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="27dp"

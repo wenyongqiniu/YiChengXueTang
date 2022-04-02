@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.LearningCenterFragment">
 
@@ -16,11 +17,12 @@
         android:layout_height="106dp"/>
 
     <com.google.android.material.tabs.TabLayout
+        android:background="#F8F8F8"
+        app:tabPaddingStart="24dp"
         app:tabIndicatorHeight="0dp"
-        app:tabBackground="@color/white"
+        app:tabBackground="@color/tab_unseclet"
         app:tabIndicatorFullWidth="false"
-        app:tabMode="fixed"
-        app:tabMaxWidth="0dp"
+        app:tabMode="scrollable"
         android:id="@+id/tab_layout"
         android:layout_below="@id/xbanner"
         android:layout_width="match_parent"
@@ -28,7 +30,6 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp2_lc"
-        android:layout_marginTop="25dp"
         android:layout_below="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

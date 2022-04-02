@@ -35,6 +35,16 @@ public class ActivityManager {
     }
 
     /**
+     * 结束指定类名的Activity
+     */
+    public void finishActivity(Class<?> cls){
+        for (Activity activity : activityList) {
+            if (activity.getClass().equals(cls)) {
+                activity.finish();
+            }
+        }
+        }
+    /**
      * 关闭所有Activity
      */
     public void finishAllActivity(){

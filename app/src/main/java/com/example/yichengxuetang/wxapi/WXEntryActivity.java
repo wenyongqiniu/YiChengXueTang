@@ -1,25 +1,17 @@
 package com.example.yichengxuetang.wxapi;
 
-import android.app.Activity;
-import android.app.ActivityManager;
+
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.MainActivity;
-import com.example.yichengxuetang.activitys.logins.VcLoginActivity;
 import com.example.yichengxuetang.application.MyApplication;
 import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.contract.BindingWechatContract;
-import com.example.yichengxuetang.contract.VcLoginContract;
 import com.example.yichengxuetang.utils.ToastUtils;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.SpUtils;

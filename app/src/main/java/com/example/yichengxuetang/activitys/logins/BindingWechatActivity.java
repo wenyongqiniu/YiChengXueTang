@@ -1,6 +1,8 @@
 package com.example.yichengxuetang.activitys.logins;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 import com.example.yichengxuetang.R;
@@ -9,6 +11,9 @@ import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.contract.BindingWechatContract;
 import com.llw.mvplibrary.mvp.MvpActivity;
+
+import cn.jiguang.verifysdk.api.JVerificationInterface;
+import cn.jiguang.verifysdk.api.RequestCallback;
 
 public class BindingWechatActivity  extends MvpActivity<BindingWechatContract.BindingWechatPresenter> implements BindingWechatContract.BindingWechatView  {
 
@@ -30,6 +35,19 @@ public class BindingWechatActivity  extends MvpActivity<BindingWechatContract.Bi
 
     @Override
     public void getFailed(Throwable e) {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
+        }
+        JVerificationInterface.dismissLoginAuthActivity(true, (code, desc) -> {
+
+        });
+        return false;
 
     }
 

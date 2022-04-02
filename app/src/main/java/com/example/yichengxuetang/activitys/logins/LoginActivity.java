@@ -13,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.MainActivity;
@@ -27,6 +26,7 @@ import com.example.yichengxuetang.contract.VcLoginContract;
 import com.example.yichengxuetang.utils.CustomerToastUtils;
 import com.example.yichengxuetang.utils.RSADecrypt;
 import com.example.yichengxuetang.utils.ToastUtils;
+import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.SpUtils;
 import com.llw.mvplibrary.network.utils.StatusBarUtils;
@@ -62,6 +62,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     private JVerifyUIConfig.Builder uiConfig;
     private String msgCode="";
     private boolean isChecked;
+    private LoginSettings settings;
 
 
     private void initViewNoSms() {
@@ -69,6 +70,12 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
         TextView tv_phone_login = findViewById(R.id.tv_phone_login);
         CheckBox check = findViewById(R.id.check);
         ImageView iv_wx_login = findViewById(R.id.iv_wx_login);
+        String msgCode2 = SpUtils.getSpString(LoginActivity.this, "msgCode", "");
+        if ("checkbox checked.".equals(msgCode2)){
+           isChecked=true;
+        }else{
+            isChecked=false;
+        }
 
         //check是否选中监听
         check.setOnClickListener(v -> {
@@ -107,7 +114,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initOneClickLogin() {
         StatusBarUtils.setColor(this,Color.parseColor("#000000"));
-        LoginSettings settings = new LoginSettings();
+        settings = new LoginSettings();
         settings.setAutoFinish(false);//设置登录完成后是否自动关闭授权页
         settings.setTimeout(15 * 1000);//设置超时时间，单位毫秒。 合法范围（0，30000],范围以外默认设置为10000
         settings.setAuthPageEventListener(new AuthPageEventListener() {
@@ -120,6 +127,9 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
                 }else{
                     msgCode = msg;
                 }
+                if ("checkbox checked.".equals(msg)){
+                    SpUtils.putSpString(LoginActivity.this,"msgCode",msgCode);
+                }
                 if (!"checkbox checked.".equals(msg)&&"checkbox unchecked.".equals(msg)){
                     SpUtils.remove(LoginActivity.this,"msgCode");
                     msgCode = msg;
@@ -131,7 +141,6 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
                     Log.d(TAG, "code=" + code + ", token=" + content + " ,operator=" + operator);
                     igniteGetPhone(content);
             } else {
-                ToastUtils.showShort(LoginActivity.this,content);
                 Log.d(TAG, "code=" + code + ", message=" + content);
             }
         });
@@ -149,22 +158,22 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
         TextView textView1 = new TextView(this);
         textView1.setText("《服务协议》");
         textView1.setTextColor(Color.parseColor("#FE8000"));
-        textView1.setTextSize(11);
+        textView1.setTextSize(14);
         RelativeLayout.LayoutParams mLayoutParamsT1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         mLayoutParamsT1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         mLayoutParamsT1.bottomMargin = 700;
-        mLayoutParamsT1.setMarginStart(100);
+        mLayoutParamsT1.setMarginStart(120);
         textView1.setLayoutParams(mLayoutParamsT1);
 
         TextView textView2 = new TextView(this);
         textView2.setText("《隐私协议》");
         textView2.setTextColor(Color.parseColor("#FE8000"));
-        textView2.setTextSize(11);
+        textView2.setTextSize(14);
         RelativeLayout.LayoutParams mLayoutParamsT2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         mLayoutParamsT2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         mLayoutParamsT2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-        mLayoutParamsT2.bottomMargin = 750;
-        mLayoutParamsT2.leftMargin = 800;
+        mLayoutParamsT2.bottomMargin = 700;
+        mLayoutParamsT2.leftMargin = 340;
         textView2.setLayoutParams(mLayoutParamsT2);
 
 
@@ -247,18 +256,17 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
                 .setSloganBottomOffsetY(500)
                 .setPrivacyState(false)
                 .setNavTransparent(false)
-                .setPrivacyOffsetY(30)
                 .setCheckedImgPath("checked")
                 .setUncheckedImgPath("unchecked")
-                .setPrivacyTextSize(11)
+                .setPrivacyTextSize(14)
                 .setPrivacyTextCenterGravity(true)
                 .setPrivacyWithBookTitleMark(true)
                 .setPrivacyOffsetY(250)
-                .setPrivacyOffsetX(20)
+                .setPrivacyOffsetX(35)
                 .enableHintToast(true, CustomerToastUtils.toastShow(this))
                 .setAppPrivacyColor(Color.parseColor("#9E9E9E"), Color.parseColor("#FD9503"))
-                .setPrivacyText("我已阅读并同意", "和", "、", "")
-                .setPrivacyCheckboxSize(12)
+                .setPrivacyText("已阅读并同意", "", "", "")
+                .setPrivacyCheckboxSize(16)
                 .setPrivacyCheckboxHidden(false)
                 .addCustomView(mBtn, false, (context, view) -> {
                     if (msgCode.equals("checkbox checked.")) {
@@ -416,6 +424,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initData(Bundle savedInstanceState) {
+        BaseApplication.getActivityManager().addActivity(this);
         boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
         if (!verifyEnable) {
             initViewNoSms();
@@ -439,7 +448,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SpUtils.remove(this,"msgCode");
+       // SpUtils.remove(this,"msgCode");
     }
 
 }

@@ -27,6 +27,7 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     private RecyclerView rv_experience_class;
     private RecyclerView rv_advanced_course;
     private RelativeLayout rl_have_data;
+    private RelativeLayout rl_no_data_x;
     private RelativeLayout rl_no_data;
     private RelativeLayout rl_dk_step;
     private RelativeLayout rl_go;
@@ -37,13 +38,15 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     private TextView tv_experience_class;
     private TextView tv_advanced_course;
     private PageStateLayout page_layout;
+    private TextView retry;
     private ShowCourseListResponse.DataBean.BigCourseBean bigCourse;
+    private String typeCode;
 
     @Override
     public void onResume() {
         super.onResume();
         assert getArguments() != null;
-        String typeCode = getArguments().getString("typeCode");
+        typeCode = getArguments().getString("typeCode");
         mPresenter.getShowCourseListPaper(typeCode);
     }
 
@@ -58,13 +61,12 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
 
                 rv_experience_class.setLayoutManager(new LinearLayoutManager(context));
                 rv_experience_class.setAdapter(showCourseListAdapter);
-
-                tv_experience_class.setVisibility(View.VISIBLE);
                 rv_experience_class.setVisibility(View.VISIBLE);
                 tv_advanced_course.setVisibility(View.VISIBLE);
+                rl_no_data_x.setVisibility(View.INVISIBLE);
             } else {
-                tv_experience_class.setVisibility(View.GONE);
                 rv_experience_class.setVisibility(View.GONE);
+                rl_no_data_x.setVisibility(View.VISIBLE);
             }
             bigCourse = data.getBigCourse();
             if (bigCourse != null) {
@@ -74,6 +76,7 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
                     tv_sign_the_contract.setText(getString(R.string.sign_the_contract));
                     tv_sign_contract_tips.setText(getString(R.string.sign_contract_tips));
                     tv_come_on.setText(getString(R.string.now_sign));
+                    iv_go.setBackgroundResource(R.mipmap.ht);
                     rl_dk_step.setBackgroundResource(R.drawable.rl_contract);
                 } else if (bigCourse.getAddressStatus() != null && bigCourse.getAddressStatus() == 0) {
                     tv_sign_the_contract.setText(getString(R.string.fill_in_address));
@@ -91,6 +94,8 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
                     tv_sign_the_contract.setText(bigCourse.getPackageName());
                     tv_sign_contract_tips.setText(bigCourse.getClassName());
                     tv_come_on.setText(bigCourse.getStartTime());
+                    iv_go.setBackground(null);
+
                 } else {
                     rv_advanced_course.setVisibility(View.VISIBLE);
                     rl_dk_step.setVisibility(View.INVISIBLE);
@@ -110,6 +115,7 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     @Override
     public void getFailed(Throwable e) {
 
+        page_layout.setPage(PageState.STATE_ERROR);
     }
 
     @Override
@@ -126,6 +132,7 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         rv_advanced_course = rootView.findViewById(R.id.rv_advanced_course);
         rl_have_data = rootView.findViewById(R.id.rl_have_data);
         rl_no_data = rootView.findViewById(R.id.rl_no_data);
+        rl_no_data_x = rootView.findViewById(R.id.rl_no_data_x);
         rl_dk_step = rootView.findViewById(R.id.rl_dk_step);
         rl_go = rootView.findViewById(R.id.rl_go);
         tv_sign_the_contract = rootView.findViewById(R.id.tv_sign_the_contract);
@@ -135,6 +142,12 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         tv_advanced_course = rootView.findViewById(R.id.tv_advanced_course);
         iv_go = rootView.findViewById(R.id.iv_go);
         page_layout.setPage(PageState.STATE_LOADING);
+        retry = rootView.findViewById(R.id.retry);
+        //加载页面出现错误监听
+        retry.setOnClickListener(v -> {
+            page_layout.setPage(PageState.STATE_LOADING);
+            mPresenter.getShowCourseListPaper(typeCode);
+        });
 
         rl_go.setOnClickListener(v -> {
             Intent intent = new Intent(context, DakeStepActivity.class);

@@ -17,6 +17,7 @@ import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.bean.ResetPasswordResponse;
 import com.example.yichengxuetang.bean.SealContractResponse;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
+import com.example.yichengxuetang.bean.SubmitAddressResponse;
 import com.example.yichengxuetang.bean.VcLoginResponse;
 import com.example.yichengxuetang.bean.WallPaperResponse;
 
@@ -100,9 +101,13 @@ public interface ApiService {
     @POST("api/studycenter/addAddress")
     Observable<AddAddressResponse> getEditAddress(@Body RequestBody body);
 
-    //地址-新增地址
+    //地址-新增/编辑地址
     @POST("api/studycenter/editAddress")
     Observable<AddAddressResponse> getChangeAddress(@Body RequestBody body);
+
+    //地址-选择收获地址
+    @POST("api/studycenter/selectAddress")
+    Observable<SubmitAddressResponse> getSubmitAddress(@Body RequestBody body);
 
     //地址-查询地址列表
     @POST("api/studycenter/getAddressList")
@@ -111,6 +116,7 @@ public interface ApiService {
     //选时间-查询可用时间
     @POST("api/studycenter/getCouseTime")
     Observable<CourseTimeResponse> getCourseTime(@Body RequestBody body);
+
     //选时间-选择时间
     @POST("api/studycenter/selectCourseTime")
     Observable<ConfirmCourseTineResponse> getSelecttime(@Body RequestBody body);

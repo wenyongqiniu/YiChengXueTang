@@ -7,10 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import com.example.yichengxuetang.utils.LoadFooterView;
-import com.example.yichengxuetang.utils.RefreshHeadView;
-import com.kingja.loadsir.core.LoadSir;
-import com.llw.mvplibrary.ActivityManager;
 import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.network.NetworkApi;
 import com.llw.mvplibrary.network.utils.SpUtils;
@@ -18,7 +14,6 @@ import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.zinc.jrecycleview.config.JRecycleViewManager;
 
 import cn.jiguang.verifysdk.api.JVerificationInterface;
 

@@ -48,9 +48,9 @@
     <string name="title_contract">课程服务合同</string>
     <string name="party_a">甲方：</string>
     <string name="title_address">通讯地址:</string>
-    <string name="party_b">乙方：</string>
-    <string name="party_b_id">身份证号：</string>
-    <string name="phone">联系电话：</string>
+    <string name="party_b">乙方</string>
+    <string name="party_b_id">身份证号</string>
+    <string name="phone">联系电话</string>
     <string name="commit_success">提交成功</string>
     <string name="no_address">为了您能够及时收到教材，不影响学习进度，请务必补充正确的地址信息。因个人填写失误导致的后续问题，本公司概不负责。</string>
     <string name="receiving_address">收货地址</string>
@@ -72,5 +72,6 @@
     <string name="create_address">新建收货地址</string>
     <string name="start_time">开课时间</string>
     <string name="full_already">已满</string>
+    <string name="success_course">课程激活成功</string>
 
 </resources>
