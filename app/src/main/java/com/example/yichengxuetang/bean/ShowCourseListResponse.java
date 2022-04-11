@@ -1,21 +1,22 @@
 package com.example.yichengxuetang.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowCourseListResponse implements Serializable {
 
     /**
      * code : 0
-     * message :
-     * data : {"xbCourseList":[{"packageId":"202008201946481588","courseId":"531847770749244411","classId":"558619293577134667","courseName":"淘宝无货源训练营","courseType":0,"currentDay":0,"totalDay":5,"customerNum":0}],"bigCourse":{"contractStatus":1,"selectClassStatus":1,"addressStatus":1,"showTeacherStatus":1,"startTime":"2022-03-26","packageName":"淘宝无货源赚钱技能课","className":"2期1班","teacherQrCode":"https://image.xicaishe.com/20220218151823EmWE41pu.jpg","bigCourseList":[{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]}}
+     * message : 
+     * data : {"xbCourseList":[{"packageId":"202008201946481588","courseId":"531847770749244411","classId":"558619293577134667","courseName":"淘宝无货源训练营","courseType":0,"currentDay":0,"totalDay":5,"customerNum":0}],"bigCourse":{"packageId":"533305006155600543","contractStatus":1,"selectClassStatus":1,"addressStatus":1,"showTeacherStatus":1,"startTime":"2022-04-07","packageName":"淘宝无货源赚钱技能课","className":"19期1班","teacherQrCode":"https://image.xicaishe.com/20220316175034pZJMbdNH.jpg","bigCourseList":[{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]}}
      */
 
     private Integer code;
     private String message;
     /**
      * xbCourseList : [{"packageId":"202008201946481588","courseId":"531847770749244411","classId":"558619293577134667","courseName":"淘宝无货源训练营","courseType":0,"currentDay":0,"totalDay":5,"customerNum":0}]
-     * bigCourse : {"contractStatus":1,"selectClassStatus":1,"addressStatus":1,"showTeacherStatus":1,"startTime":"2022-03-26","packageName":"淘宝无货源赚钱技能课","className":"2期1班","teacherQrCode":"https://image.xicaishe.com/20220218151823EmWE41pu.jpg","bigCourseList":[{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]}
+     * bigCourse : {"packageId":"533305006155600543","contractStatus":1,"selectClassStatus":1,"addressStatus":1,"showTeacherStatus":1,"startTime":"2022-04-07","packageName":"淘宝无货源赚钱技能课","className":"19期1班","teacherQrCode":"https://image.xicaishe.com/20220316175034pZJMbdNH.jpg","bigCourseList":[{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]}
      */
 
     private DataBean data;
@@ -46,14 +47,15 @@ public class ShowCourseListResponse implements Serializable {
 
     public static class DataBean implements Serializable{
         /**
+         * packageId : 533305006155600543
          * contractStatus : 1
          * selectClassStatus : 1
          * addressStatus : 1
          * showTeacherStatus : 1
-         * startTime : 2022-03-26
+         * startTime : 2022-04-07
          * packageName : 淘宝无货源赚钱技能课
-         * className : 2期1班
-         * teacherQrCode : https://image.xicaishe.com/20220218151823EmWE41pu.jpg
+         * className : 19期1班
+         * teacherQrCode : https://image.xicaishe.com/20220316175034pZJMbdNH.jpg
          * bigCourseList : [{"courseId":"533305521744614302","courseName":"淘宝无货源赚钱技能课","studyStatus":0,"coverImage":"https://image.xicaishe.com/20220111175303cXnn5ERQ.png"}]
          */
 
@@ -88,6 +90,7 @@ public class ShowCourseListResponse implements Serializable {
         }
 
         public static class BigCourseBean implements Serializable{
+            private String packageId;
             private Integer contractStatus;
             private Integer selectClassStatus;
             private Integer addressStatus;
@@ -96,7 +99,14 @@ public class ShowCourseListResponse implements Serializable {
             private String packageName;
             private String className;
             private String teacherQrCode;
-            private String packageId;
+            /**
+             * courseId : 533305521744614302
+             * courseName : 淘宝无货源赚钱技能课
+             * studyStatus : 0
+             * coverImage : https://image.xicaishe.com/20220111175303cXnn5ERQ.png
+             */
+
+            private List<BigCourseListBean> bigCourseList;
 
             public String getPackageId() {
                 return packageId;
@@ -105,16 +115,6 @@ public class ShowCourseListResponse implements Serializable {
             public void setPackageId(String packageId) {
                 this.packageId = packageId;
             }
-
-            /**
-             * courseId : 533305521744614302
-             * courseName : 淘宝无货源赚钱技能课
-             * studyStatus : 0
-             * coverImage : https://image.xicaishe.com/20220111175303cXnn5ERQ.png
-             */
-
-
-            private List<BigCourseListBean> bigCourseList;
 
             public Integer getContractStatus() {
                 return contractStatus;
@@ -237,6 +237,15 @@ public class ShowCourseListResponse implements Serializable {
             private Integer currentDay;
             private Integer totalDay;
             private Integer customerNum;
+            private ArrayList<String> imgUrls;
+
+            public ArrayList<String> getImgUrls() {
+                return imgUrls;
+            }
+
+            public void setImgUrls(ArrayList<String> imgUrls) {
+                this.imgUrls = imgUrls;
+            }
 
             public String getPackageId() {
                 return packageId;
@@ -301,6 +310,8 @@ public class ShowCourseListResponse implements Serializable {
             public void setCustomerNum(Integer customerNum) {
                 this.customerNum = customerNum;
             }
+            
         }
     }
+    
 }

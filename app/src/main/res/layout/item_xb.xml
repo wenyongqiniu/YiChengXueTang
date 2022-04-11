@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/tv_sign_up"
-            android:layout_width="88dp"
+            android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_below="@id/tv_day"
             android:layout_marginStart="22dp"
@@ -55,6 +55,15 @@
             android:text="177236人已报名"
             android:textColor="#ff545454"
             android:textSize="12sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_head_view"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/tv_sign_up"
+            android:layout_below="@id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
 
         <RelativeLayout
             android:layout_width="71dp"

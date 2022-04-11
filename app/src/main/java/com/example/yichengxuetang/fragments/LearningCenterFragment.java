@@ -21,6 +21,9 @@ import com.example.yichengxuetang.utils.MyTabLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.llw.mvplibrary.mvp.MvpFragment;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.xbanner.XBanner;
 
 import java.lang.reflect.Field;
@@ -34,6 +37,7 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
     private TabLayout mTabLayout;
     private ViewPager2 mVp2;
     private TabLayoutMediator mediator;
+    private SmartRefreshLayout sml_learning;
 
     public LearningCenterFragment() {
         // Required empty public constructor
@@ -61,17 +65,12 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                 }
             });
 
-            mediator = new TabLayoutMediator(mTabLayout, mVp2, new TabLayoutMediator.TabConfigurationStrategy() {
-                @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText(courseTypeList.get(position).getName());
-                }
-            });
+            mediator = new TabLayoutMediator(mTabLayout, mVp2, (tab, position) -> tab.setText(courseTypeList.get(position).getName()));
             mediator.attach();
             for (int i = 0; i < courseTypeList.size(); i++) {
                 mTabLayout.getTabAt(i).setCustomView(R.layout.main_top_item);
                 TextView toMyTextView = mTabLayout.getTabAt(i).getCustomView().findViewById(R.id.tv_top_item);
-                //默认选择第一个tab,设置字体大小和默认风格为加粗 toMyTextView是我自己项目中第一个Tab的TextView,自己看着改。
+                //默认选择第一个tab,设置字体大小和默认风格为加粗
                 toMyTextView.setText(courseTypeList.get(i).getName());
             }
             TextView toMyTextView = mTabLayout.getTabAt(0).getCustomView().findViewById(R.id.tv_top_item);
@@ -141,6 +140,8 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
         return new LearningCenterContract.LearningCenterPresenter();
     }
 
+
+
     @Override
     public void initData(Bundle savedInstanceState) {
         showLoadingDialog();
@@ -152,6 +153,7 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
         mXBanner = rootView.findViewById(R.id.xbanner);
         mTabLayout = rootView.findViewById(R.id.tab_layout);
         mVp2 = rootView.findViewById(R.id.vp2_lc);
+        sml_learning = rootView.findViewById(R.id.sml_learning);
     }
 
     @Override

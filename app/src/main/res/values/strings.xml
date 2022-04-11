@@ -73,5 +73,16 @@
     <string name="start_time">开课时间</string>
     <string name="full_already">已满</string>
     <string name="success_course">课程激活成功</string>
+    <string name="add_teacher_tips">添加老师微信</string>
+    <string name="add_teacher_tips2">请务必添加老师微信，否则无法上课</string>
+    <string name="add_wx">添加微信</string>
+    <string name="unclock_progress">解锁进度</string>
+    <string name="start_time1">开课时间：</string>
+    <string name="start_time_tips">开课前三天，公众号会推送班主任微信，为不影响您的学习进度，请您及时添加！</string>
+    <string name="add_teacher">添加老师微信</string>
+    <string name="add_teacher_must_tips">请务必添加老师微信，否则无法上课</string>
+    <string name="add_teacher_wx">添加老师</string>
+    <string name="course_arrange">课程安排</string>
+
 
 </resources>

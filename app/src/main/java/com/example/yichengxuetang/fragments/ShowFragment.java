@@ -1,6 +1,7 @@
 package com.example.yichengxuetang.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.learningactivitys.DakeStepActivity;
 import com.example.yichengxuetang.adapter.ShowCourseListAdapter;
+import com.example.yichengxuetang.adapter.ShowDakeCourseListAdapter;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
 import com.example.yichengxuetang.contract.ShowCourseListContract;
 import com.ljb.page.PageState;
@@ -31,12 +33,16 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     private RelativeLayout rl_no_data;
     private RelativeLayout rl_dk_step;
     private RelativeLayout rl_go;
+    private RelativeLayout rl_start_time;
+    private RelativeLayout rl_add_teacher;
     private TextView tv_sign_the_contract;
     private TextView tv_sign_contract_tips;
     private TextView tv_come_on;
     private ImageView iv_go;
     private TextView tv_experience_class;
+    private TextView tv_must_tips;
     private TextView tv_advanced_course;
+    private TextView tv_start_time_course;
     private PageStateLayout page_layout;
     private TextView retry;
     private ShowCourseListResponse.DataBean.BigCourseBean bigCourse;
@@ -55,12 +61,23 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         if (wallPaperResponse.getCode() == 0) {
             page_layout.setPage(PageState.STATE_SUCCESS);
             ShowCourseListResponse.DataBean data = wallPaperResponse.getData();
+
+            if (data.getBigCourse() != null) {
+                if (data.getBigCourse().getBigCourseList()!=null&&data.getBigCourse().getBigCourseList().size()>0){
+                    ShowDakeCourseListAdapter showDakeCourseListAdapter = new ShowDakeCourseListAdapter(R.layout.item_dake, wallPaperResponse.getData().getBigCourse().getBigCourseList());
+                    showDakeCourseListAdapter.notifyDataSetChanged();
+                    rv_advanced_course.setLayoutManager(new LinearLayoutManager(context));
+                    rv_advanced_course.setAdapter(showDakeCourseListAdapter);
+                }
+            }
+
+
             if (data.getXbCourseList() != null && data.getXbCourseList().size() > 0) {
                 ShowCourseListAdapter showCourseListAdapter = new ShowCourseListAdapter(R.layout.item_xb, wallPaperResponse.getData().getXbCourseList());
                 showCourseListAdapter.notifyDataSetChanged();
-
                 rv_experience_class.setLayoutManager(new LinearLayoutManager(context));
                 rv_experience_class.setAdapter(showCourseListAdapter);
+
                 rv_experience_class.setVisibility(View.VISIBLE);
                 tv_advanced_course.setVisibility(View.VISIBLE);
                 rl_no_data_x.setVisibility(View.INVISIBLE);
@@ -91,14 +108,16 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
                     rl_dk_step.setBackgroundResource(R.drawable.rl_select_time);
                     iv_go.setBackgroundResource(R.mipmap.time_icon);
                 } else if (bigCourse.getShowTeacherStatus() != null && bigCourse.getShowTeacherStatus() == 0) {
-                    tv_sign_the_contract.setText(bigCourse.getPackageName());
-                    tv_sign_contract_tips.setText(bigCourse.getClassName());
-                    tv_come_on.setText(bigCourse.getStartTime());
-                    iv_go.setBackground(null);
+                    tv_start_time_course.setText(String.format("%s%s", getString(R.string.start_time1), bigCourse.getStartTime()));
+                    rl_start_time.setVisibility(View.VISIBLE);
+                    rl_dk_step.setVisibility(View.INVISIBLE);
 
                 } else {
-                    rv_advanced_course.setVisibility(View.VISIBLE);
+                    tv_start_time_course.setText(R.string.add_teacher);
+                    tv_must_tips.setText(R.string.add_teacher_must_tips);
+                    rl_start_time.setVisibility(View.VISIBLE);
                     rl_dk_step.setVisibility(View.INVISIBLE);
+                    rl_add_teacher.setVisibility(View.VISIBLE);
                 }
             } else {
                 rl_no_data.setVisibility(View.VISIBLE);
@@ -135,12 +154,16 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         rl_no_data_x = rootView.findViewById(R.id.rl_no_data_x);
         rl_dk_step = rootView.findViewById(R.id.rl_dk_step);
         rl_go = rootView.findViewById(R.id.rl_go);
+        rl_start_time = rootView.findViewById(R.id.rl_start_time);
+        rl_add_teacher = rootView.findViewById(R.id.rl_add_teacher);
         tv_sign_the_contract = rootView.findViewById(R.id.tv_sign_the_contract);
         tv_sign_contract_tips = rootView.findViewById(R.id.tv_sign_contract_tips);
         tv_come_on = rootView.findViewById(R.id.tv_come_on);
         tv_experience_class = rootView.findViewById(R.id.tv_experience_class);
         tv_advanced_course = rootView.findViewById(R.id.tv_advanced_course);
         iv_go = rootView.findViewById(R.id.iv_go);
+        tv_start_time_course = rootView.findViewById(R.id.tv_start_time_course);
+        tv_must_tips = rootView.findViewById(R.id.tv_must_tips);
         page_layout.setPage(PageState.STATE_LOADING);
         retry = rootView.findViewById(R.id.retry);
         //加载页面出现错误监听

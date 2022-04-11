@@ -1,4 +1,4 @@
-package com.example.yichengxuetang.activitys;
+package com.example.yichengxuetang.activitys.learningactivitys;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -24,10 +24,9 @@ public class VideoActivity extends AppCompatActivity {
     }
     private void init() {
         StatusBarUtils.setTransparent(this);
-       // StatusBarUtils.setColor(this,R.color.black);
-        StatusBarUtils.setTextDark(this,false);
+        StatusBarUtils.setTextDark(this,true);
         playerStandard =  findViewById(R.id.playerstandard);
-        playerStandard.setUp(videoUrl,MyJieCaoVideoView.SCREEN_LAYOUT_NORMAL,"追龙");
+        playerStandard.setUp(videoUrl,MyJieCaoVideoView.SCREEN_LAYOUT_NORMAL,"");
         JCVideoPlayer.FULLSCREEN_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;  //横向
         JCVideoPlayer.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
         playerStandard.startVideo();

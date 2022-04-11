@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/page_layout"
     android:background="#F8F8F8">
 
     <RelativeLayout
@@ -11,22 +11,22 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_marginTop="25dp"
             android:id="@+id/tv_experience_class"
             android:layout_width="54dp"
             android:layout_height="25dp"
             android:layout_marginStart="19dp"
+            android:layout_marginTop="25dp"
             android:text="@string/experience_class"
             android:textColor="#ff2a2a2a"
             android:textSize="18sp" />
 
         <RelativeLayout
-            android:visibility="invisible"
             android:id="@+id/rl_no_data_x"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_experience_class"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_no_data_x"
@@ -68,12 +68,82 @@
             android:id="@+id/rv_advanced_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_advanced_course"
+            android:layout_below="@id/rl_start_time"
             android:layout_marginTop="11dp" />
 
 
         <RelativeLayout
-            android:visibility="visible"
+            android:visibility="gone"
+            android:id="@+id/rl_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_advanced_course"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/start_time_shape">
+
+            <TextView
+                android:id="@+id/tv_start_time_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/start_time1"
+                android:textColor="#fffe8000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_must_tips"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_start_time_course"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/start_time_tips"
+                android:textColor="#6F6F6F"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:visibility="invisible"
+                android:id="@+id/rl_add_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="13dp"
+                android:background="@drawable/login_phone_shape">
+
+                <ImageView
+                    android:id="@+id/iv_add_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="6dp"
+                    android:background="@mipmap/wx_teacher" />
+
+                <TextView
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toEndOf="@id/iv_add_teacher"
+                    android:id="@+id/tv_add_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="@string/add_teacher_wx"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:id="@+id/rl_dk_step"
             android:layout_width="match_parent"
             android:layout_height="117dp"
@@ -81,55 +151,57 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="11dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/rl_contract">
+            android:background="@drawable/rl_contract"
+            android:visibility="invisible">
 
             <TextView
-                android:layout_marginEnd="50dp"
                 android:id="@+id/tv_sign_the_contract"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="27dp"
+                android:layout_marginEnd="50dp"
                 android:text="@string/sign_the_contract"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_marginBottom="30dp"
                 android:id="@+id/tv_sign_contract_tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_sign_the_contract"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
                 android:text="@string/sign_contract_tips"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp" />
 
             <RelativeLayout
-                android:background="@drawable/now_contract_shape"
                 android:id="@+id/rl_go"
-                android:layout_alignParentEnd="true"
                 android:layout_width="98dp"
                 android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="25dp">
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/now_contract_shape">
 
                 <ImageView
                     android:id="@+id/iv_go"
-                    android:layout_marginStart="12dp"
-                    android:layout_centerVertical="true"
-                    android:background="@mipmap/ht"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:background="@mipmap/ht" />
 
                 <TextView
                     android:id="@+id/tv_come_on"
-                    android:layout_marginEnd="12dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
                     android:gravity="center"
                     android:text="@string/now_sign"
                     android:textColor="#FE6C00"
@@ -137,16 +209,15 @@
             </RelativeLayout>
 
 
-
         </RelativeLayout>
 
         <RelativeLayout
-            android:visibility="invisible"
             android:id="@+id/rl_no_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_advanced_course"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_no_data"

@@ -16,10 +16,12 @@ import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.bean.ResetPasswordResponse;
 import com.example.yichengxuetang.bean.SealContractResponse;
+import com.example.yichengxuetang.bean.SectionDetailResponse;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
 import com.example.yichengxuetang.bean.SubmitAddressResponse;
 import com.example.yichengxuetang.bean.VcLoginResponse;
 import com.example.yichengxuetang.bean.WallPaperResponse;
+import com.example.yichengxuetang.bean.XbCourseListResponse;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -43,8 +45,6 @@ public interface ApiService {
 
     /**
      * 获取验证码
-     *
-     *
      */
     @POST("api/common/sendSmsCode")
     Observable<VcLoginResponse> getVcResponse(@Body RequestBody response);
@@ -113,6 +113,10 @@ public interface ApiService {
     @POST("api/studycenter/getAddressList")
     Observable<AddressListResponse> getAddressList(@Body RequestBody body);
 
+    //地址-查询地址列表
+    @POST("api/studycenter/delAddress")
+    Observable<AddressListResponse> getDeleteAddress(@Body RequestBody body);
+
     //选时间-查询可用时间
     @POST("api/studycenter/getCouseTime")
     Observable<CourseTimeResponse> getCourseTime(@Body RequestBody body);
@@ -120,6 +124,14 @@ public interface ApiService {
     //选时间-选择时间
     @POST("api/studycenter/selectCourseTime")
     Observable<ConfirmCourseTineResponse> getSelecttime(@Body RequestBody body);
+
+    //体验课-查询课程信息
+    @POST("api/studycenter/getXbCourseInfo")
+    Observable<XbCourseListResponse> getXbCourseList(@Body RequestBody body);
+
+    //体验课|进阶课-查询图文小节详情
+    @POST("api/studycenter/getTWSectionDetail")
+    Observable<SectionDetailResponse> getSectionDetail(@Body RequestBody body);
 
 
 }

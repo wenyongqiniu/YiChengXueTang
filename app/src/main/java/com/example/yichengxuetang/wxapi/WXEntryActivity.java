@@ -64,7 +64,6 @@ public class WXEntryActivity extends MvpActivity<BindingWechatContract.BindingWe
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();

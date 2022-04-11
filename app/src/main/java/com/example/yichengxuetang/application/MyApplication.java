@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import com.example.yichengxuetang.R;
+import com.example.yichengxuetang.mediaplayer.FloatWindow;
+import com.example.yichengxuetang.mediaplayer.OpenMusicActivity;
+import com.example.yichengxuetang.utils.MediaPlayerHolder;
 import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.network.NetworkApi;
 import com.llw.mvplibrary.network.utils.SpUtils;
@@ -21,6 +25,7 @@ public class MyApplication extends BaseApplication {
     public Context mContext;
     public static final String APP_ID = "wxf39af9ce5edcad58";
     public static IWXAPI api;
+    public static MediaPlayerHolder mediaPlayerIngHolder;
 
 
     @Override
@@ -33,9 +38,18 @@ public class MyApplication extends BaseApplication {
         JVerificationInterface.setDebugMode(true);
         JVerificationInterface.init(this, (code, result) -> Log.d("MyApp", "[init] code = " + code + " result = " + result));
         regToWx();
-        SpUtils.remove(this,"msgCode");
+        SpUtils.remove(this, "msgCode");
         //JRecycleViewManager.getInstance().setLoadMoreView(new LoadFooterView(this));
         //JRecycleViewManager.getInstance().setRefreshLoadView(new RefreshHeadView(this));
+
+        //悬浮播放器
+        FloatWindow.with(this)//application上下文
+                .setLayoutId(R.layout.easy_float)//悬浮布局
+                .setFilter(OpenMusicActivity.class)
+                .build();
+
+        mediaPlayerIngHolder = new MediaPlayerHolder();
+
     }
 
 

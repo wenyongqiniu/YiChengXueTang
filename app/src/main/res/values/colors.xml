@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_main">#FD9503</color>
     <color name="tab_unseclet">#F8F8F8</color>
+    <color name="divider">#F3F3F3</color>
 </resources>

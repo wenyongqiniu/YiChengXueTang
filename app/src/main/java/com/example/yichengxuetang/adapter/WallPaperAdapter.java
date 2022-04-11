@@ -1,13 +1,10 @@
 package com.example.yichengxuetang.adapter;
 
-import android.content.Intent;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.yichengxuetang.R;
-import com.example.yichengxuetang.activitys.VideoActivity;
 import com.example.yichengxuetang.bean.WallPaperResponse;
 
 import java.util.List;
