@@ -56,8 +56,6 @@ public class MyApplication extends BaseApplication {
     private void regToWx() {
         // 通过WXAPIFactory工厂，获取IWXAPI的实例
         api = WXAPIFactory.createWXAPI(this, APP_ID, true);
-        // 将应用的appId注册到微信
-        api.registerApp(APP_ID);
 
         //建议动态监听微信启动广播进行注册到微信
         registerReceiver(new BroadcastReceiver() {
@@ -75,15 +73,14 @@ public class MyApplication extends BaseApplication {
         SendAuth.Req req = new SendAuth.Req();
         req.scope = "snsapi_userinfo";
         req.state = "wechat_sdk_demo_test";
-        MyApplication.api.sendReq(req);
+        api.sendReq(req);
     }
 
     //微信绑定
-
     public static void wxBinding() {
         SendAuth.Req req = new SendAuth.Req();
         req.scope = "snsapi_userinfo";
         req.state = "wechat_binding";
-        MyApplication.api.sendReq(req);
+        api.sendReq(req);
     }
 }

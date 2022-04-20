@@ -150,9 +150,9 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
         mBtn.setTextColor(Color.parseColor("#FE8000"));
         mBtn.setBackgroundResource(R.drawable.login_shape);
         RelativeLayout.LayoutParams mLayoutParams1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        mLayoutParams1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        mLayoutParams1.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         mLayoutParams1.height = 150;
-        mLayoutParams1.setMargins(85, 0, 85, 1000);
+        mLayoutParams1.setMargins(85, 0, 85, 0);
         mBtn.setLayoutParams(mLayoutParams1);
 
         TextView textView1 = new TextView(this);

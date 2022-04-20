@@ -83,6 +83,11 @@
     <string name="add_teacher_must_tips">请务必添加老师微信，否则无法上课</string>
     <string name="add_teacher_wx">添加老师</string>
     <string name="course_arrange">课程安排</string>
+    <string name="music_list">播放列表</string>
+    <string name="half_speed">0.5X</string>
+    <string name="one_speed">1.0X</string>
+    <string name="one_half_speed">1.5X</string>
+    <string name="double_speed">2.0X</string>
 
 
 </resources>

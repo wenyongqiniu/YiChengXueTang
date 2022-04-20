@@ -192,7 +192,16 @@ public class ShowCourseListResponse implements Serializable {
                 private String courseId;
                 private String courseName;
                 private Integer studyStatus;
+                private Integer contentType;
                 private String coverImage;
+
+                public Integer getContentType() {
+                    return contentType;
+                }
+
+                public void setContentType(Integer contentType) {
+                    this.contentType = contentType;
+                }
 
                 public String getCourseId() {
                     return courseId;

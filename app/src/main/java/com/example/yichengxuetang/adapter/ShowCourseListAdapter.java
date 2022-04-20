@@ -2,7 +2,6 @@ package com.example.yichengxuetang.adapter;
 
 import android.content.Intent;
 import android.text.Html;
-import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.yichengxuetang.R;
-import com.example.yichengxuetang.activitys.learningactivitys.DakeCourseListActivity;
 import com.example.yichengxuetang.activitys.learningactivitys.XbCourseListActivity;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
 
@@ -35,13 +33,10 @@ public class ShowCourseListAdapter extends BaseQuickAdapter<ShowCourseListRespon
         baseViewHolder.setText(R.id.tv_day, Html.fromHtml(tvContent));
         baseViewHolder.setText(R.id.tv_sign_up, showCourseListResponse.getCustomerNum() + "人已报名");
 
-        baseViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), XbCourseListActivity.class);
-                intent.putExtra("courseId",showCourseListResponse.getCourseId());
-                getContext().startActivity(intent);
-            }
+        baseViewHolder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), XbCourseListActivity.class);
+            intent.putExtra("courseId",showCourseListResponse.getCourseId());
+            getContext().startActivity(intent);
         });
 
 

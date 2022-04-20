@@ -28,7 +28,7 @@
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true">
         <activity android:name=".activitys.learningactivitys.BigImageActivity"></activity>
-        <activity android:name=".activitys.learningactivitys.SectionDetailActivity" />
+        <activity android:name=".activitys.learningactivitys.XbSectionDetailActivity" />
         <activity android:name=".mediaplayer.OpenMusicActivity" />
         <activity android:name=".activitys.learningactivitys.DakeCourseListActivity" />
         <activity android:name=".activitys.learningactivitys.XbCourseListActivity" />

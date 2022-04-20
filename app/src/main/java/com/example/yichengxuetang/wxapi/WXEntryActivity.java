@@ -12,6 +12,7 @@ import com.example.yichengxuetang.application.MyApplication;
 import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.contract.BindingWechatContract;
+import com.example.yichengxuetang.utils.CustomerToastUtils;
 import com.example.yichengxuetang.utils.ToastUtils;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.SpUtils;
@@ -44,9 +45,13 @@ public class WXEntryActivity extends MvpActivity<BindingWechatContract.BindingWe
                 }
                 break;
             case BaseResp.ErrCode.ERR_AUTH_DENIED://用户拒绝授权
+                CustomerToastUtils.toastShow(this).show();
+                CustomerToastUtils.tv_toast.setText("用户拒绝授权");
                 finish();
                 break;
             case BaseResp.ErrCode.ERR_USER_CANCEL://用户取消
+                CustomerToastUtils.toastShow(this).show();
+                CustomerToastUtils.tv_toast.setText("用户取消授权");
                 finish();
                 break;
             default:
