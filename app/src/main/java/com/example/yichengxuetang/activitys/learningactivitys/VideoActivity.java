@@ -1,56 +1,70 @@
 package com.example.yichengxuetang.activitys.learningactivitys;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.example.yichengxuetang.R;
+import com.example.yichengxuetang.bean.WallPaperResponse;
+import com.example.yichengxuetang.contract.MainContract;
 import com.example.yichengxuetang.fragments.learningcenterfragments.DakeCourseListFragment;
 import com.example.yichengxuetang.fragments.learningcenterfragments.DakeNotesFragment;
 import com.example.yichengxuetang.utils.MyJieCaoVideoView;
+import com.example.yichengxuetang.utils.ScreenUtils;
+import com.example.yichengxuetang.utils.TakeNotePopup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.StatusBarUtils;
+import com.lxj.xpopup.XPopup;
 
 import java.util.ArrayList;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
-public class VideoActivity extends AppCompatActivity {
+public class VideoActivity extends MvpActivity<MainContract.MainPresenter> implements MainContract.IMainView {
     public static MyJieCaoVideoView playerStandard;
     private TextView tv_title_top;
+    private ImageView iv_note;
     private RelativeLayout rl_left;
-    public static String videoUrl = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
-        init();
-    }
+   // public static String videoUrl = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    public static String videoUrl = "https://vfx.mtime.cn/Video/2019/03/21/mp4/190321153853126488.mp4";
+    private AudioManager audioManager;
 
     private void init() {
         StatusBarUtils.setTransparent(this);
         StatusBarUtils.setTextDark(this, true);
         playerStandard = findViewById(R.id.playerstandard);
         tv_title_top = findViewById(R.id.tv_title_top);
+        iv_note = findViewById(R.id.iv_note);
         rl_left = findViewById(R.id.rl_left);
+
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        Glide.with(this)
+                .load(videoUrl)
+                .into(playerStandard.thumbImageView);
         playerStandard.setUp(videoUrl, MyJieCaoVideoView.SCREEN_LAYOUT_NORMAL, "");
         JCVideoPlayer.FULLSCREEN_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;  //横向
         JCVideoPlayer.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
+
         playerStandard.startVideo();
         Intent intent = getIntent();
         String courseId = intent.getStringExtra("courseId");
@@ -58,6 +72,8 @@ public class VideoActivity extends AppCompatActivity {
 
         tv_title_top.setText(courseName);
         rl_left.setOnClickListener(v -> finish());
+
+        iv_note.setOnClickListener(v -> showNotePop());
         TabLayout tab_dake = findViewById(R.id.tab_dake);
         ViewPager2 vp2_dake = findViewById(R.id.vp2_dake);
         ArrayList<Fragment> fragments = new ArrayList<>();
@@ -141,9 +157,20 @@ public class VideoActivity extends AppCompatActivity {
         });
     }
 
+    //记笔记弹框
+    private void showNotePop() {
+       new XPopup.Builder(this)
+                .maxHeight(ScreenUtils.getScreenHeight(this))
+                .moveUpToKeyboard(false) //如果不加这个，评论弹窗会移动到软键盘上面
+                .enableDrag(true)
+                .asCustom(new TakeNotePopup(this))
+                .show();
+
+    }
+
     @Override
     public void onBackPressed() {
-        if (playerStandard.backPress()) {
+        if (JCVideoPlayer.backPress()) {
             return;
         }
         super.onBackPressed();
@@ -152,6 +179,60 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        playerStandard.releaseAllVideos();
+        JCVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    protected MainContract.MainPresenter createPresenter() {
+        return new MainContract.MainPresenter();
+    }
+
+    @Override
+    public void getWallPaper(WallPaperResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getFailed(Throwable e) {
+
+    }
+    /**
+     * 获取视频文件第一帧图
+     *
+     * @param path 视频文件的路径
+     * @return Bitmap 返回获取的Bitmap
+     */
+    public static Bitmap getVideoThumb(String path) {
+        MediaMetadataRetriever media = new MediaMetadataRetriever();
+        media.setDataSource(path);
+        return media.getFrameAtTime();
+    }
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        init();
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_video;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                //音量键up
+                playerStandard.iv_volume.setBackgroundResource(R.drawable.jc_add_volume);
+                return false;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                //音量键down
+                if (audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)==AudioManager.RINGER_MODE_SILENT){
+                    playerStandard.iv_volume.setBackgroundResource(R.drawable.jc_close_volume);
+                }
+                return false;
+            default:
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

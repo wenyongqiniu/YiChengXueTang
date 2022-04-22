@@ -20,8 +20,7 @@ import com.example.yichengxuetang.contract.ShowCourseListContract;
 import com.ljb.page.PageState;
 import com.ljb.page.PageStateLayout;
 import com.llw.mvplibrary.mvp.MvpFragment;
-import com.zinc.jrecycleview.JRecycleView;
-import com.zinc.jrecycleview.adapter.JRefreshAndLoadMoreAdapter;
+
 
 
 public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseListPresenter> implements ShowCourseListContract.ShowCourseListView {

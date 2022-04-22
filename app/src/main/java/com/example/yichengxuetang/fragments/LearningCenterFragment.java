@@ -1,34 +1,32 @@
 package com.example.yichengxuetang.fragments;
 
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.contract.LearningCenterContract;
-import com.example.yichengxuetang.utils.MyTabLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.ljb.page.PageState;
+import com.ljb.page.PageStateLayout;
 import com.llw.mvplibrary.mvp.MvpFragment;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.llw.mvplibrary.network.utils.StatusBarUtils;
 import com.stx.xhb.xbanner.XBanner;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LearningCenterFragment extends MvpFragment<LearningCenterContract.LearningCenterPresenter> implements LearningCenterContract.LearningCenterView {
 
@@ -36,8 +34,12 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
     private XBanner mXBanner;
     private TabLayout mTabLayout;
     private ViewPager2 mVp2;
+    private TextView retry;
     private TabLayoutMediator mediator;
-    private SmartRefreshLayout sml_learning;
+    private SwipeRefreshLayout sml_learning;
+    private ArrayList<Fragment> fragments;
+    private List<LearningCenterResponse.DataBean.CourseTypeListBean> courseTypeList;
+    private PageStateLayout page_layout;
 
     public LearningCenterFragment() {
         // Required empty public constructor
@@ -46,8 +48,9 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
     @Override
     public void getLearningCenter(LearningCenterResponse wallPaperResponse) {
         if (wallPaperResponse.getCode() == 0) {
-            List<LearningCenterResponse.DataBean.CourseTypeListBean> courseTypeList = wallPaperResponse.getData().getCourseTypeList();
-            ArrayList<Fragment> fragments = new ArrayList<>();
+            page_layout.setPage(PageState.STATE_SUCCESS);
+            courseTypeList = wallPaperResponse.getData().getCourseTypeList();
+            fragments = new ArrayList<>();
             for (int i = 0; i < courseTypeList.size(); i++) {
                 fragments.add(new ShowFragment());
             }
@@ -55,8 +58,7 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                 @NonNull
                 @Override
                 public Fragment createFragment(int position) {
-                    Fragment fragment = fragments.get(position);
-                    return fragment;
+                    return fragments.get(position);
                 }
 
                 @Override
@@ -65,50 +67,58 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
                 }
             });
 
-            mediator = new TabLayoutMediator(mTabLayout, mVp2, (tab, position) -> tab.setText(courseTypeList.get(position).getName()));
+            mediator = new TabLayoutMediator(mTabLayout, mVp2, new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    tab.setText(courseTypeList.get(position).getName());
+                }
+            });
             mediator.attach();
             for (int i = 0; i < courseTypeList.size(); i++) {
-                mTabLayout.getTabAt(i).setCustomView(R.layout.main_top_item);
-                TextView toMyTextView = mTabLayout.getTabAt(i).getCustomView().findViewById(R.id.tv_top_item);
+                Objects.requireNonNull(mTabLayout.getTabAt(i)).setCustomView(R.layout.main_top_item);
+                TextView toMyTextView = Objects.requireNonNull(Objects.requireNonNull(mTabLayout.getTabAt(i)).getCustomView()).findViewById(R.id.tv_top_item);
                 //默认选择第一个tab,设置字体大小和默认风格为加粗
                 toMyTextView.setText(courseTypeList.get(i).getName());
             }
-            TextView toMyTextView = mTabLayout.getTabAt(0).getCustomView().findViewById(R.id.tv_top_item);
-            View tab_item_indicator = mTabLayout.getTabAt(0).getCustomView().findViewById(R.id.tab_item_indicator);
+
+            TextView toMyTextView = Objects.requireNonNull(Objects.requireNonNull(mTabLayout.getTabAt(0)).getCustomView()).findViewById(R.id.tv_top_item);
+            View tab_item_indicator = Objects.requireNonNull(Objects.requireNonNull(mTabLayout.getTabAt(0)).getCustomView()).findViewById(R.id.tab_item_indicator);
             tab_item_indicator.setVisibility(View.VISIBLE);
             toMyTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             toMyTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             toMyTextView.setTextColor(Color.parseColor("#2A2A2A"));
             Bundle bundle = new Bundle();
-            bundle.putString("typeCode", courseTypeList.get(0).getType()+"");
+            bundle.putString("typeCode", courseTypeList.get(0).getType() + "");
             fragments.get(0).setArguments(bundle);
             //看这里看这里看这里
             mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
-                    int position = tab.getPosition();
-                    TextView tv = tab.getCustomView().findViewById(R.id.tv_top_item);
-                    tv.setText(courseTypeList.get(position).getName());
-                    tv.setTextColor(Color.parseColor("#2A2A2A"));
-                    tv.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
-                    tv.setTextSize(20);
-                    View tab_item_indicator = mTabLayout.getTabAt(position).getCustomView().findViewById(R.id.tab_item_indicator);
-                    tab_item_indicator.setVisibility(View.VISIBLE);
-                    tv.invalidate();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("typeCode", courseTypeList.get(position).getType()+"");
-                    fragments.get(position).setArguments(bundle);
-                    tab.getCustomView().findViewById(R.id.tv_top_item).setSelected(true);
+                    if (tab.getCustomView() != null) {
+                        int position = tab.getPosition();
+                        TextView tv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tv_top_item);
+                        tv.setText(courseTypeList.get(position).getName());
+                        tv.setTextColor(Color.parseColor("#2A2A2A"));
+                        tv.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
+                        tv.setTextSize(20);
+                        View tab_item_indicator = Objects.requireNonNull(Objects.requireNonNull(mTabLayout.getTabAt(position)).getCustomView()).findViewById(R.id.tab_item_indicator);
+                        tab_item_indicator.setVisibility(View.VISIBLE);
+                        tv.invalidate();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("typeCode", courseTypeList.get(position).getType() + "");
+                        fragments.get(position).setArguments(bundle);
+                        tab.getCustomView().findViewById(R.id.tv_top_item).setSelected(true);
+                    }
                 }
 
                 @Override
                 public void onTabUnselected(TabLayout.Tab tab) {
                     int position = tab.getPosition();
-                    TextView tv = tab.getCustomView().findViewById(R.id.tv_top_item);
+                    TextView tv = Objects.requireNonNull(tab.getCustomView()).findViewById(R.id.tv_top_item);
                     tv.setText(courseTypeList.get(position).getName());
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
                     tv.setTextColor(Color.parseColor("#B5B5B5"));
-                    View tab_item_indicator = mTabLayout.getTabAt(position).getCustomView().findViewById(R.id.tab_item_indicator);
+                    View tab_item_indicator = Objects.requireNonNull(Objects.requireNonNull(mTabLayout.getTabAt(position)).getCustomView()).findViewById(R.id.tab_item_indicator);
                     tab_item_indicator.setVisibility(View.INVISIBLE);
                     tv.invalidate();
                     tab.getCustomView().findViewById(R.id.tv_top_item).setSelected(false);
@@ -119,14 +129,16 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
 
                 }
             });
+        } else {
+            page_layout.setPage(PageState.STATE_EMPTY);
         }
-        hideLoadingDialog();
-
+        //sml_learning.setRefreshing(false);
     }
 
     @Override
     public void getFailed(Throwable e) {
-
+       // sml_learning.setRefreshing(false);
+        page_layout.setPage(PageState.STATE_ERROR);
     }
 
     @Override
@@ -141,23 +153,38 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
     }
 
 
-
     @Override
     public void initData(Bundle savedInstanceState) {
-        showLoadingDialog();
-        mPresenter.getLearningCenterPaper();
         initView();
     }
 
+
     private void initView() {
+        page_layout = rootView.findViewById(R.id.page_layout);
+        page_layout.setContentView(R.layout.fragment_learning_center);
         mXBanner = rootView.findViewById(R.id.xbanner);
         mTabLayout = rootView.findViewById(R.id.tab_layout);
         mVp2 = rootView.findViewById(R.id.vp2_lc);
-        sml_learning = rootView.findViewById(R.id.sml_learning);
+        retry = rootView.findViewById(R.id.retry);
+        //sml_learning = rootView.findViewById(R.id.sml_learning);
+
+        page_layout.setPage(PageState.STATE_LOADING);
+        mPresenter.getLearningCenterPaper();
+
+      /*  //刷新
+        sml_learning.setOnRefreshListener(() -> {
+            mPresenter.getLearningCenterPaper();
+            page_layout.setPage(PageState.STATE_LOADING);
+        });*/
+        //点击重试
+        retry.setOnClickListener(v -> {
+            page_layout.setPage(PageState.STATE_LOADING);
+            mPresenter.getLearningCenterPaper();
+        });
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_learning_center;
+        return R.layout.base_layout;
     }
 }

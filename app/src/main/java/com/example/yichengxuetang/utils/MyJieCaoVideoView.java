@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.media.AudioManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,7 +38,9 @@ public class MyJieCaoVideoView extends JCVideoPlayer {
     public ProgressBar bottomProgressBar, loadingProgressBar;
     public TextView titleTextView;
     public ImageView thumbImageView;
+    public ImageView iv_volume;
     public ImageView tinyBackImageView;
+    private boolean close_volume;
 
 
     protected MyJieCaoVideoView.DismissControlViewTimerTask mDismissControlViewTimerTask;
@@ -57,10 +61,12 @@ public class MyJieCaoVideoView extends JCVideoPlayer {
         titleTextView = (TextView) findViewById(R.id.title);
         backButton = (ImageView) findViewById(R.id.back);
         thumbImageView = (ImageView) findViewById(R.id.thumb);
+        iv_volume = (ImageView) findViewById(R.id.iv_volume);
         loadingProgressBar = (ProgressBar) findViewById(R.id.loading);
         tinyBackImageView = (ImageView) findViewById(R.id.back_tiny);
 
         thumbImageView.setOnClickListener(this);
+        iv_volume.setOnClickListener(this);
         backButton.setOnClickListener(this);
         tinyBackImageView.setOnClickListener(this);
 
@@ -197,6 +203,16 @@ public class MyJieCaoVideoView extends JCVideoPlayer {
             backPress();
         } else if (i == R.id.back_tiny) {
             backPress();
+        } else if (i == R.id.iv_volume) {
+            if (close_volume) {
+                iv_volume.setBackgroundResource(R.drawable.jc_add_volume);
+                close_volume = false;
+                mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+            } else {
+                iv_volume.setBackgroundResource(R.drawable.jc_close_volume);
+                close_volume = true;
+                mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+            }
         }
     }
 
@@ -779,4 +795,5 @@ public class MyJieCaoVideoView extends JCVideoPlayer {
         super.onCompletion();
         cancelDismissControlViewTimer();
     }
+
 }

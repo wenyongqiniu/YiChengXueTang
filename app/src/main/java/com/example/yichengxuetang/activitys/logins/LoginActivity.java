@@ -424,6 +424,8 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initData(Bundle savedInstanceState) {
+        StatusBarUtils.setColor(this, Color.parseColor("#FFFFFF"));
+        StatusBarUtils.setTextDark(this, true);
         BaseApplication.getActivityManager().addActivity(this);
         boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
         if (!verifyEnable) {

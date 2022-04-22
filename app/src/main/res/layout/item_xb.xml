@@ -12,6 +12,7 @@
         android:background="@drawable/course_shape">
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tv_course_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

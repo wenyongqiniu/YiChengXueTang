@@ -47,8 +47,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
         }
-        StatusBarUtils.setColor(this,0X000000);
-        StatusBarUtils.setTextDark(this,true);
+        StatusBarUtils.setColor(this, 0X000000);
+        StatusBarUtils.setTextDark(this, true);
         initData(savedInstanceState);
     }
 
@@ -59,6 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
 
     /**
      * Toast消息提示  字符
+     *
      * @param llw
      */
     protected void showMsg(CharSequence llw) {
@@ -67,9 +68,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
 
     /**
      * Toast消息提示  资源ID
+     *
      * @param resourceId
      */
-    protected void showMsg(int resourceId){
+    protected void showMsg(int resourceId) {
         Toast.makeText(context, resourceId, Toast.LENGTH_SHORT).show();
     }
 
@@ -99,9 +101,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
     /**
      * 返回 不需要参数
      */
-    protected void Back(){
+    protected void Back() {
         context.finish();
-        if(!isFastClick()){
+        if (!isFastClick()) {
             context.finish();
         }
     }
@@ -122,7 +124,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
             }
         });
     }
-
 
 
     /**
@@ -184,12 +185,25 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
 
     /**
      * 获取InputMethodManager，隐藏软键盘
+     *
      * @param token
      */
-    private void hideKeyboard(IBinder token) {
+    public void hideKeyboard(IBinder token) {
         if (token != null) {
             InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    /**
+     * 获取InputMethodManager，弹出软键盘
+     *
+     * @param view
+     */
+    public void showKeyboard(View view) {
+        if (view != null) {
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.showSoftInput(view , 0);
         }
     }
 }

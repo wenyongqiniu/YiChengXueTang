@@ -57,8 +57,8 @@ public class BottomBar extends View {
     private int titleColorAfter = Color.parseColor("#ff5d5e");
 
     private int titleSizeInDp = 10;
-    private int iconWidth = 20;
-    private int iconHeight = 20;
+    private int iconWidth = 25;
+    private int iconHeight = 25;
     private int titleIconMargin = 5;
 
     public BottomBar setContainer(int containerId) {
