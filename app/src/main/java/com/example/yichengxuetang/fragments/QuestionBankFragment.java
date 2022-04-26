@@ -31,6 +31,7 @@ public class QuestionBankFragment extends Fragment implements OnSelectListener {
 
     public QuestionBankFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -48,11 +49,10 @@ public class QuestionBankFragment extends Fragment implements OnSelectListener {
         super.onHiddenChanged(hidden);
         if (!hidden) {
             StatusBarUtils.setColor(getActivity(), Color.parseColor("#FFF7ED"));
-            StatusBarUtils.setTextDark(getActivity(), true);
         } else {
             StatusBarUtils.setColor(getActivity(), Color.parseColor("#F8F8F8"));
-            StatusBarUtils.setTextDark(getActivity(), true);
         }
+        StatusBarUtils.setTextDark(getActivity(), true);
     }
 
 

@@ -39,6 +39,15 @@
         android:textSize="17sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:src="@drawable/triang"
+        android:layout_below="@id/tv_course_type"
+        android:layerType="none"
+        android:layout_marginTop="-12dp"
+        android:layout_toEndOf="@id/tv_course_type"
+        android:layout_width="10dp"
+        android:layout_height="10dp"/>
+
 
     <LinearLayout
         android:id="@+id/ll_exercise"
@@ -126,10 +135,13 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="23dp"
+            android:drawablePadding="14.5dp"
+            android:gravity="center"
             android:text="@string/wrong_book"
             android:textColor="#ff353535"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/error_book" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -157,10 +169,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="23dp"
+            android:drawablePadding="14.5dp"
             android:text="@string/exercise_record"
             android:textColor="#ff353535"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/exercise_record" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -188,10 +202,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="23dp"
+            android:drawablePadding="14.5dp"
             android:text="@string/favorites"
             android:textColor="#ff353535"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/favorates" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -215,6 +231,7 @@
         android:layout_marginTop="14dp">
 
         <TextView
+            android:drawablePadding="14.5dp"
             android:id="@+id/tv_ranking_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -223,7 +240,8 @@
             android:text="@string/ranking_list"
             android:textColor="#ff353535"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/ranking_list" />
 
         <TextView
             android:layout_width="wrap_content"
