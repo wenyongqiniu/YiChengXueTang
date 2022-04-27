@@ -28,6 +28,8 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         mavenCentral()
+        //融云 maven 仓库地址
+        maven {url "https://maven.rongcloud.cn/repository/maven-releases/"}
 
     }
 }

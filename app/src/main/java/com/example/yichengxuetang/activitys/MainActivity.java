@@ -10,6 +10,7 @@ import com.example.yichengxuetang.bean.WallPaperResponse;
 import com.example.yichengxuetang.contract.MainContract;
 import com.example.yichengxuetang.fragments.DiscoverFragment;
 import com.example.yichengxuetang.fragments.LearningCenterFragment;
+import com.example.yichengxuetang.fragments.MessageFragment;
 import com.example.yichengxuetang.fragments.MineFragment;
 import com.example.yichengxuetang.fragments.QuestionBankFragment;
 import com.example.yichengxuetang.utils.BottomBar;
@@ -57,7 +58,9 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
                 .addItem(DiscoverFragment.class,
                         "发现", R.drawable.no_discover, R.drawable.discover)
                 .addItem(QuestionBankFragment.class,
-                        "题库", R.drawable.no_question_bank, R.drawable.question_bank)
+                        "练习", R.drawable.no_question_bank, R.drawable.question_bank)
+                .addItem(MessageFragment.class,
+                        "消息", R.drawable.no_question_bank, R.drawable.question_bank)
                 .addItem(MineFragment.class,
                         "我的", R.drawable.no_mine, R.drawable.mine)
                 .build();

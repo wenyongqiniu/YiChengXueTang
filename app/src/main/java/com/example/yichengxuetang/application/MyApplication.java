@@ -20,12 +20,17 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import cn.jiguang.verifysdk.api.JVerificationInterface;
+import io.rong.imlib.RongIMClient;
 
 public class MyApplication extends BaseApplication {
     public Context mContext;
-    public static final String APP_ID = "wxf39af9ce5edcad58";
+    public static final String APP_ID = "wxf39af9ce5edcad58";//微信
     public static IWXAPI api;
     public static MediaPlayerHolder mediaPlayerIngHolder;
+    public String appKey = "82hegw5u8e0xx";//融云
+
+    public static String rongToken = "bMIqo4X/BtEDvho+B5Cn4jFGQNd9OIi+5QGUOEzXJJc=@xiw9.cn.rongnav.com;xiw9.cn.rongcfg.com";
+    public static String rongToken2 = "HgSTDDfgaJpFaB5VIBK/Prd3dv3j2mMssem2/hzmya0=@xiw9.cn.rongnav.com;xiw9.cn.rongcfg.com";
 
 
     @Override
@@ -38,6 +43,9 @@ public class MyApplication extends BaseApplication {
         JVerificationInterface.setDebugMode(true);
         JVerificationInterface.init(this, (code, result) -> Log.d("MyApp", "[init] code = " + code + " result = " + result));
         regToWx();
+
+        //初始化融云
+        RongIMClient.init(this, appKey);
         SpUtils.remove(this, "msgCode");
         //JRecycleViewManager.getInstance().setLoadMoreView(new LoadFooterView(this));
         //JRecycleViewManager.getInstance().setRefreshLoadView(new RefreshHeadView(this));

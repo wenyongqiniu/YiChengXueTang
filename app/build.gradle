@@ -108,4 +108,10 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
 
 
+    implementation 'cn.rongcloud.sdk:call_kit:5.1.2'
+    implementation 'cn.rongcloud.sdk:call_lib:5.1.2'
+    implementation 'cn.rongcloud.sdk:im_kit:5.1.2'
+    implementation 'cn.rongcloud.sdk:im_lib:5.1.2'
+    implementation 'cn.rongcloud.sdk:sight:5.1.2'
+
 }

@@ -18,18 +18,19 @@
     </queries>
 
     <application
-        android:largeHeap="true"
         android:name=".application.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activitys.questionbankactivitys.OrderExerciseActivity"/>
-        <activity android:name=".activitys.questionbankactivitys.TestExerciseActivity"/>
+        <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.OrderExerciseActivity" />
+        <activity android:name=".activitys.questionbankactivitys.TestExerciseActivity" />
         <activity android:name=".activitys.learningactivitys.BigImageActivity" />
         <activity
             android:name=".activitys.learningactivitys.XbSectionDetailActivity"
