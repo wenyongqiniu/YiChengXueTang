@@ -114,4 +114,8 @@ dependencies {
     implementation 'cn.rongcloud.sdk:im_lib:5.1.2'
     implementation 'cn.rongcloud.sdk:sight:5.1.2'
 
+    implementation 'com.github.getActivity:XXPermissions:13.5'
+
+    compile 'com.jcodeing:kmedia-core:r1.0.10' //KMedia核心模块
+
 }

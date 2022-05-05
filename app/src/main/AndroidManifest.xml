@@ -8,7 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
@@ -24,11 +29,12 @@
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity"></activity>
+        <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity" />
         <activity android:name=".activitys.questionbankactivitys.OrderExerciseActivity" />
         <activity android:name=".activitys.questionbankactivitys.TestExerciseActivity" />
         <activity android:name=".activitys.learningactivitys.BigImageActivity" />
@@ -68,6 +74,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activitys.MainActivity" />
 
+        <service android:name="com.example.yichengxuetang.utils.AppService" />
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="11b0645c978128cea97843e9" />

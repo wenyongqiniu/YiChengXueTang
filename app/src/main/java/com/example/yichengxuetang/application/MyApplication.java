@@ -14,6 +14,8 @@ import com.example.yichengxuetang.utils.MediaPlayerHolder;
 import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.network.NetworkApi;
 import com.llw.mvplibrary.network.utils.SpUtils;
+import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.impl.LoadingPopupView;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -31,6 +33,7 @@ public class MyApplication extends BaseApplication {
 
     public static String rongToken = "bMIqo4X/BtEDvho+B5Cn4jFGQNd9OIi+5QGUOEzXJJc=@xiw9.cn.rongnav.com;xiw9.cn.rongcfg.com";
     public static String rongToken2 = "HgSTDDfgaJpFaB5VIBK/Prd3dv3j2mMssem2/hzmya0=@xiw9.cn.rongnav.com;xiw9.cn.rongcfg.com";
+    public static LoadingPopupView loadingPopupView;
 
 
     @Override
@@ -55,7 +58,9 @@ public class MyApplication extends BaseApplication {
                 .setLayoutId(R.layout.easy_float)//悬浮布局
                 .setFilter(OpenMusicActivity.class)
                 .build();
-
+        loadingPopupView = new XPopup.Builder(this)
+                .asLoading()
+                .setTitle("加载中");
         mediaPlayerIngHolder = new MediaPlayerHolder();
 
     }

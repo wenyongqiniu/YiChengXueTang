@@ -14,11 +14,16 @@ import com.example.yichengxuetang.fragments.MessageFragment;
 import com.example.yichengxuetang.fragments.MineFragment;
 import com.example.yichengxuetang.fragments.QuestionBankFragment;
 import com.example.yichengxuetang.utils.BottomBar;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 import com.llw.mvplibrary.ActivityManager;
 import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.KLog;
 import com.llw.mvplibrary.network.utils.StatusBarUtils;
+
+import java.util.List;
 
 import cn.jiguang.verifysdk.api.JVerificationInterface;
 
@@ -44,6 +49,7 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
      * 初始化列表
      */
     private void initView() {
+
         StatusBarUtils.setColor(this, Color.parseColor("#F8F8F8"));
         StatusBarUtils.setTextDark(this, true);
         BottomBar bottomBar = findViewById(R.id.bottom_navigation);
