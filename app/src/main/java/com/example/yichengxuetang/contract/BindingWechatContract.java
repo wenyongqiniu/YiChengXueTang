@@ -2,10 +2,10 @@ package com.example.yichengxuetang.contract;
 
 import android.annotation.SuppressLint;
 
+
 import com.example.yichengxuetang.api.ApiService;
 import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
-import com.example.yichengxuetang.bean.WallPaperResponse;
 import com.llw.mvplibrary.base.BasePresenter;
 import com.llw.mvplibrary.base.BaseView;
 import com.llw.mvplibrary.network.NetworkApi;

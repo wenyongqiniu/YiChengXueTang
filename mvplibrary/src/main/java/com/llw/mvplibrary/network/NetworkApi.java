@@ -40,7 +40,7 @@ public class NetworkApi {
     //API访问地址
     private static String mBaseUrl;
     //是否为正式环境
-    private static boolean isFormal = true;
+    public static boolean isFormal = true;
 
     /**
      * 初始化
@@ -49,9 +49,9 @@ public class NetworkApi {
         iNetworkRequiredInfo = networkRequiredInfo;
         //当初始化这个NetworkApi时，会判断当前App的网络环境
         isFormal = NetworkEnvironmentActivity.isFormalEnvironment(networkRequiredInfo.getApplicationContext());
-        if (isFormal) {
+        if (!isFormal) {
             //正式环境
-            mBaseUrl = "https://testycapi.xicaishe.com/";
+            mBaseUrl = "https://ycapi.xicaishe.com/";
         } else {
             //测试环境
             mBaseUrl = "https://testycapi.xicaishe.com/";

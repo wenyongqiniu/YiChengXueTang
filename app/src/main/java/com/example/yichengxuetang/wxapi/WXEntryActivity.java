@@ -4,6 +4,7 @@ package com.example.yichengxuetang.wxapi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 
 import com.example.yichengxuetang.R;
@@ -102,7 +103,7 @@ public class WXEntryActivity extends MvpActivity<BindingWechatContract.BindingWe
 
     @Override
     public void getFailed(Throwable e) {
-
+        ToastUtils.showShort(WXEntryActivity.this,e.getMessage()+"");
     }
 
     @Override

@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.logins.LoginActivity;
+import com.example.yichengxuetang.bean.GroupInfo;
+import com.example.yichengxuetang.bean.GroupNoticeBean;
 import com.example.yichengxuetang.bean.WallPaperResponse;
 import com.example.yichengxuetang.contract.MainContract;
 import com.example.yichengxuetang.fragments.DiscoverFragment;
@@ -13,6 +15,7 @@ import com.example.yichengxuetang.fragments.LearningCenterFragment;
 import com.example.yichengxuetang.fragments.MessageFragment;
 import com.example.yichengxuetang.fragments.MineFragment;
 import com.example.yichengxuetang.fragments.QuestionBankFragment;
+import com.example.yichengxuetang.fragments.RYMessageFragment;
 import com.example.yichengxuetang.utils.BottomBar;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
@@ -26,6 +29,7 @@ import com.llw.mvplibrary.network.utils.StatusBarUtils;
 import java.util.List;
 
 import cn.jiguang.verifysdk.api.JVerificationInterface;
+import io.rong.imkit.conversationlist.ConversationListFragment;
 
 
 /**
@@ -35,7 +39,7 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        BaseApplication.getActivityManager().finishActivity(LoginActivity.class);
+        // BaseApplication.getActivityManager().finishActivity(LoginActivity.class);
         JVerificationInterface.dismissLoginAuthActivity(true, (code, desc) -> {
 
         });
@@ -61,12 +65,12 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
                 .setTitleBeforeAndAfterColor("#8E8F90", "#FE8000")
                 .addItem(LearningCenterFragment.class,
                         "学习中心", R.drawable.no_learning_center, R.drawable.learning_center)
-                .addItem(DiscoverFragment.class,
-                        "发现", R.drawable.no_discover, R.drawable.discover)
+                /*.addItem(DiscoverFragment.class,
+                        "发现", R.drawable.no_discover, R.drawable.discover)*/
                 .addItem(QuestionBankFragment.class,
                         "练习", R.drawable.no_question_bank, R.drawable.question_bank)
-                .addItem(MessageFragment.class,
-                        "消息", R.drawable.no_question_bank, R.drawable.question_bank)
+                /* .addItem(MessageFragment.class,
+                         "消息", R.drawable.no_question_bank, R.drawable.question_bank)*/
                 .addItem(MineFragment.class,
                         "我的", R.drawable.no_mine, R.drawable.mine)
                 .build();
@@ -91,6 +95,16 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
 
     @Override
     public void getWallPaper(WallPaperResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getGroupInfo(GroupInfo groupInfo) {
+
+    }
+
+    @Override
+    public void getGroupNotice(GroupNoticeBean groupInfo) {
 
     }
 

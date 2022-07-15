@@ -4,13 +4,11 @@ import android.annotation.SuppressLint;
 
 import com.example.yichengxuetang.api.ApiService;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
-import com.example.yichengxuetang.bean.WallPaperResponse;
 import com.llw.mvplibrary.base.BasePresenter;
 import com.llw.mvplibrary.base.BaseView;
 import com.llw.mvplibrary.network.NetworkApi;
 import com.llw.mvplibrary.network.observer.BaseObserver;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import okhttp3.FormBody;

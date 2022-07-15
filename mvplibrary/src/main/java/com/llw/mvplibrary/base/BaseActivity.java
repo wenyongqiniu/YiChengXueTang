@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
         initBeforeView(savedInstanceState);
         this.context = this;
         //添加继承这个BaseActivity的Activity
-        BaseApplication.getActivityManager().addActivity(this);
+       // BaseApplication.getActivityManager().addActivity(this);
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
         }

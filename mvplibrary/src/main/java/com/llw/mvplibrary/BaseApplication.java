@@ -5,6 +5,7 @@ import android.content.Context;
 
 /**
  * 基类Application
+ *
  * @author llw
  */
 public class BaseApplication extends Application {
@@ -14,6 +15,8 @@ public class BaseApplication extends Application {
     private static BaseApplication application;
 
     private static Context context;
+    public static String token = "";
+    public static int code;
 
     @Override
     public void onCreate() {

@@ -286,7 +286,6 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
                     if (msgCode.equals("checkbox checked.")) {
                         MyApplication.wxLogin();
                     } else {
-
                         CustomerToastUtils.toastShow(this).show();
                     }
 
@@ -426,7 +425,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     public void initData(Bundle savedInstanceState) {
         StatusBarUtils.setColor(this, Color.parseColor("#FFFFFF"));
         StatusBarUtils.setTextDark(this, true);
-        BaseApplication.getActivityManager().addActivity(this);
+       // BaseApplication.getActivityManager().addActivity(this);
         boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
         if (!verifyEnable) {
             initViewNoSms();

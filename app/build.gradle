@@ -116,6 +116,9 @@ dependencies {
 
     implementation 'com.github.getActivity:XXPermissions:13.5'
 
-    compile 'com.jcodeing:kmedia-core:r1.0.10' //KMedia核心模块
+
+    implementation 'com.github.yangchong211.YCNotification:NotificationLib:1.0.4'
+
+    implementation "org.java-websocket:Java-WebSocket:1.5.1"//websocket
 
 }

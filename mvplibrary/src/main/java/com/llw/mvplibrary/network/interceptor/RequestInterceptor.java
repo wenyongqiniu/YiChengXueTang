@@ -44,11 +44,12 @@ public class RequestInterceptor implements Interceptor {
         String nowDateTime = DateUtil.getNowDateTime();
         //构建器
         Request.Builder builder = chain.request().newBuilder();
-        String token = SpUtils.getSpString(BaseApplication.getApplication(), "token", "");
-        String token1 = "558613009255645185";
+       /* String token = SpUtils.getSpString(BaseApplication.getApplication(), "token", "");
+        String token1 = "558295054055653377";
         if (!"".equals(token)){
-            builder.addHeader("token",token1);
-        }
+        }*/
+        String token1 = "558295054055653377";
+        builder.addHeader("token",token1);
         //添加使用环境
         builder.addHeader("os","android");
         //添加版本号

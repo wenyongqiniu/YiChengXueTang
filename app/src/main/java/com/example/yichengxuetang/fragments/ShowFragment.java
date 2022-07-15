@@ -1,26 +1,40 @@
 package com.example.yichengxuetang.fragments;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.learningactivitys.DakeStepActivity;
+import com.example.yichengxuetang.activitys.logins.LoginActivity;
 import com.example.yichengxuetang.adapter.ShowCourseListAdapter;
 import com.example.yichengxuetang.adapter.ShowDakeCourseListAdapter;
+import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
 import com.example.yichengxuetang.contract.ShowCourseListContract;
+import com.example.yichengxuetang.utils.CustomerToastUtils;
+import com.example.yichengxuetang.utils.DonwloadSaveImg;
 import com.ljb.page.PageState;
 import com.ljb.page.PageStateLayout;
 import com.llw.mvplibrary.mvp.MvpFragment;
+import com.llw.mvplibrary.network.utils.SpUtils;
+import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.core.BasePopupView;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
+import java.util.ArrayList;
 
 
 public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseListPresenter> implements ShowCourseListContract.ShowCourseListView {
@@ -42,37 +56,42 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     private TextView tv_must_tips;
     private TextView tv_advanced_course;
     private TextView tv_start_time_course;
+    private TextView tv_add_teacher;
     private PageStateLayout page_layout;
     private TextView retry;
+    private SmartRefreshLayout sml_empty;
     private ShowCourseListResponse.DataBean.BigCourseBean bigCourse;
     private String typeCode;
+    private ShowCourseListResponse.DataBean data;
+    private ShowDakeCourseListAdapter showDakeCourseListAdapter;
+    private ShowCourseListAdapter showCourseListAdapter;
+    private ArrayList<ShowCourseListResponse.DataBean.BigCourseBean.BigCourseListBean> bigCourseListBeans;
 
     @Override
     public void onResume() {
         super.onResume();
+        bigCourseListBeans.clear();
         assert getArguments() != null;
         typeCode = getArguments().getString("typeCode");
         mPresenter.getShowCourseListPaper(typeCode);
+
     }
 
     @Override
     public void getShowCourseListCenter(ShowCourseListResponse wallPaperResponse) {
         if (wallPaperResponse.getCode() == 0) {
             page_layout.setPage(PageState.STATE_SUCCESS);
-            ShowCourseListResponse.DataBean data = wallPaperResponse.getData();
+            data = wallPaperResponse.getData();
 
             if (data.getBigCourse() != null) {
-                if (data.getBigCourse().getBigCourseList()!=null&&data.getBigCourse().getBigCourseList().size()>0){
-                    ShowDakeCourseListAdapter showDakeCourseListAdapter = new ShowDakeCourseListAdapter(R.layout.item_dake, wallPaperResponse.getData().getBigCourse().getBigCourseList());
+                if (data.getBigCourse().getBigCourseList() != null && data.getBigCourse().getBigCourseList().size() > 0) {
+                    bigCourseListBeans.addAll(data.getBigCourse().getBigCourseList());
                     showDakeCourseListAdapter.notifyDataSetChanged();
-                    rv_advanced_course.setLayoutManager(new LinearLayoutManager(context));
-                    rv_advanced_course.setAdapter(showDakeCourseListAdapter);
                 }
             }
 
-
             if (data.getXbCourseList() != null && data.getXbCourseList().size() > 0) {
-                ShowCourseListAdapter showCourseListAdapter = new ShowCourseListAdapter(R.layout.item_xb, wallPaperResponse.getData().getXbCourseList());
+                showCourseListAdapter = new ShowCourseListAdapter(R.layout.item_xb, data.getXbCourseList());
                 showCourseListAdapter.notifyDataSetChanged();
                 rv_experience_class.setLayoutManager(new LinearLayoutManager(context));
                 rv_experience_class.setAdapter(showCourseListAdapter);
@@ -131,8 +150,35 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
     }
 
     @Override
-    public void getFailed(Throwable e) {
+    public void getLearningCenter(LearningCenterResponse wallPaperResponse) {
 
+    }
+
+   /* @Override
+    public void getLearningCenter(LearningCenterResponse wallPaperResponse) {
+
+        if (wallPaperResponse.getCode() == 0) {
+            if (wallPaperResponse.getData().getCourseTypeList() != null && wallPaperResponse.getData().getCourseTypeList().size() != 0) {
+                data = new ShowCourseListResponse.DataBean();
+                mPresenter.getShowCourseListPaper(5 + "");
+            } else {
+                page_layout.setPage(PageState.STATE_EMPTY);
+            }
+        } else if (wallPaperResponse.getCode() == 1017) {
+            SpUtils.remove(getActivity(), "token");
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            CustomerToastUtils.toastShow(getActivity()).show();
+            CustomerToastUtils.tv_toast.setText("登录超时");
+            getActivity().finish();
+        } else {
+            page_layout.setPage(PageState.STATE_EMPTY);
+        }
+
+    }*/
+
+    @Override
+    public void getFailed(Throwable e) {
         page_layout.setPage(PageState.STATE_ERROR);
     }
 
@@ -155,6 +201,7 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         rl_go = rootView.findViewById(R.id.rl_go);
         rl_start_time = rootView.findViewById(R.id.rl_start_time);
         rl_add_teacher = rootView.findViewById(R.id.rl_add_teacher);
+        tv_add_teacher = rootView.findViewById(R.id.tv_add_teacher);
         tv_sign_the_contract = rootView.findViewById(R.id.tv_sign_the_contract);
         tv_sign_contract_tips = rootView.findViewById(R.id.tv_sign_contract_tips);
         tv_come_on = rootView.findViewById(R.id.tv_come_on);
@@ -165,10 +212,53 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
         tv_must_tips = rootView.findViewById(R.id.tv_must_tips);
         page_layout.setPage(PageState.STATE_LOADING);
         retry = rootView.findViewById(R.id.retry);
+        //sml_empty = rootView.findViewById(R.id.sml_empty);
+
+        //添加老师微信
+        tv_add_teacher.setOnClickListener(view -> showTeacherPop());
+
+      /* SmartRefreshLayout sml_show = rootView.findViewById(R.id.sml_show);
+
+        sml_show.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                sml_show.finishLoadMore();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                data = new ShowCourseListResponse.DataBean();
+                bigCourse = new ShowCourseListResponse.DataBean.BigCourseBean();
+                bigCourseListBeans.clear();
+                //mPresenter.getLearningCenterPaper();
+                sml_show.finishRefresh();
+                showDakeCourseListAdapter.notifyDataSetChanged();
+
+            }
+        });*/
+
+        /*sml_empty.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                sml_empty.finishLoadMore();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                data = new ShowCourseListResponse.DataBean();
+                bigCourse = new ShowCourseListResponse.DataBean.BigCourseBean();
+                bigCourseListBeans.clear();
+               // mPresenter.getLearningCenterPaper();
+                page_layout.setPage(PageState.STATE_LOADING);
+                sml_empty.finishRefresh();
+                showDakeCourseListAdapter.notifyDataSetChanged();
+            }
+        });*/
+
         //加载页面出现错误监听
         retry.setOnClickListener(v -> {
             page_layout.setPage(PageState.STATE_LOADING);
-            mPresenter.getShowCourseListPaper(typeCode);
+            mPresenter.getShowCourseListPaper(5 + "");
         });
 
         rl_go.setOnClickListener(v -> {
@@ -177,6 +267,48 @@ public class ShowFragment extends MvpFragment<ShowCourseListContract.ShowCourseL
             intent.putExtra("packageId", bigCourse.getPackageId());
             startActivity(intent);
         });
+
+        bigCourseListBeans = new ArrayList<>();
+        showDakeCourseListAdapter = new ShowDakeCourseListAdapter(R.layout.item_dake, bigCourseListBeans);
+        rv_advanced_course.setLayoutManager(new LinearLayoutManager(context));
+        rv_advanced_course.setAdapter(showDakeCourseListAdapter);
+    }
+
+    //弹出老师二维码
+    private void showTeacherPop() {
+        new XPopup.Builder(context)
+                .enableDrag(true)
+                .asCustom(new addWxPop(context, data))
+                .show();
+    }
+
+    public static class addWxPop extends BasePopupView {
+        private Context context;
+        private ShowCourseListResponse.DataBean dataBean;
+
+        public addWxPop(@NonNull Context context, ShowCourseListResponse.DataBean data) {
+            super(context);
+            this.context = context;
+            this.dataBean = data;
+        }
+
+        @Override
+        protected int getPopupLayoutId() {
+            return R.layout.pop_wx;
+        }
+
+        @Override
+        protected void onCreate() {
+            super.onCreate();
+            ImageView iv_rccode = findViewById(R.id.iv_rc_code);
+            TextView tv_keep = findViewById(R.id.tv_keep);
+            Glide.with(context).load(dataBean.getBigCourse().getTeacherQrCode()).into(iv_rccode);
+            tv_keep.setOnClickListener(view -> {
+                DonwloadSaveImg.donwloadImg(context, dataBean.getBigCourse().getTeacherQrCode());
+                dismiss();
+            });
+
+        }
     }
 
     @Override

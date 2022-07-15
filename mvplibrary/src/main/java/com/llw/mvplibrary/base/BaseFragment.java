@@ -18,15 +18,17 @@ import java.util.Objects;
 
 /**
  * 基类Fragment，普通Fragment继承即可。
+ *
  * @author llw
  */
 public abstract class BaseFragment extends Fragment implements IUiCallback {
 
     protected View rootView;
     protected LayoutInflater layoutInflater;
-    protected Activity context;
+    protected Context context;
     //弹窗
     private Dialog mDialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,11 @@ public abstract class BaseFragment extends Fragment implements IUiCallback {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         layoutInflater = inflater;
-        if(rootView == null){
-            rootView = inflater.inflate(getLayoutId(),null);
-        }else {
+        if (rootView == null) {
+            rootView = inflater.inflate(getLayoutId(), null);
+        } else {
             ViewGroup viewGroup = (ViewGroup) rootView.getParent();
-            if(viewGroup != null){
+            if (viewGroup != null) {
                 viewGroup.removeView(rootView);
             }
         }
@@ -56,12 +58,13 @@ public abstract class BaseFragment extends Fragment implements IUiCallback {
 
     /**
      * 绑定
+     *
      * @param context
      */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Activity){
+        if (context instanceof Activity) {
             this.context = (Activity) context;
         }
     }
@@ -79,6 +82,7 @@ public abstract class BaseFragment extends Fragment implements IUiCallback {
     public void initBeforeView(Bundle savedInstanceState) {
 
     }
+
     /**
      * 弹窗出现
      */

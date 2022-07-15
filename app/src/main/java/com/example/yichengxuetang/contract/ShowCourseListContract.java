@@ -2,6 +2,7 @@ package com.example.yichengxuetang.contract;
 
 import android.annotation.SuppressLint;
 
+
 import com.example.yichengxuetang.api.ApiService;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.ShowCourseListResponse;
@@ -19,6 +20,7 @@ import okhttp3.RequestBody;
 
 /**
  * 将V与M订阅起来
+ *
  * @author llw
  */
 public class ShowCourseListContract {
@@ -26,11 +28,11 @@ public class ShowCourseListContract {
     public static class ShowCourseListPresenter extends BasePresenter<ShowCourseListView> {
 
         @SuppressLint("CheckResult")
-        public void getShowCourseListPaper(String typeCode){
-            ApiService service  = NetworkApi.createService(ApiService.class);
+        public void getShowCourseListPaper(String typeCode) {
+            ApiService service = NetworkApi.createService(ApiService.class);
             JSONObject json = new JSONObject();
             try {
-                json.put("typeCode",typeCode);
+                json.put("typeCode", typeCode);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -52,9 +54,33 @@ public class ShowCourseListContract {
                 }
             }));
         }
+
+        @SuppressLint("CheckResult")
+        public void getLearningCenterPaper() {
+            ApiService service = NetworkApi.createService(ApiService.class);
+            JSONObject json = new JSONObject();
+
+            RequestBody body = FormBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), json.toString());
+            service.getLearningCenter(body).compose(NetworkApi.applySchedulers(new BaseObserver<LearningCenterResponse>() {
+                @Override
+                public void onSuccess(LearningCenterResponse wallPaperResponse) {
+                    if (getView() != null) {
+                        getView().getLearningCenter(wallPaperResponse);
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable e) {
+                    if (getView() != null) {
+                        getView().getFailed(e);
+                    }
+                }
+            }));
+        }
     }
 
     public interface ShowCourseListView extends BaseView {
         void getShowCourseListCenter(ShowCourseListResponse wallPaperResponse);
+        void getLearningCenter(LearningCenterResponse wallPaperResponse);
     }
 }

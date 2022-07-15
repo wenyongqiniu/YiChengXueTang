@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.yichengxuetang">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission
+        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +17,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
+    <uses-permission
+        android:name="android.permission.INTERNAL_SYSTEM_WINDOW"
         tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.MODIFY_PHONE_STATE"
@@ -33,11 +39,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YiChengXueTang"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
         <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity" />
         <activity android:name=".activitys.questionbankactivitys.OrderExerciseActivity" />
         <activity android:name=".activitys.questionbankactivitys.TestExerciseActivity" />
         <activity android:name=".activitys.learningactivitys.BigImageActivity" />
+        <activity android:name=".activitys.learningactivitys.DoHomeWorkActivity" />
+        <activity android:name=".activitys.learningactivitys.ExamActivity" />
+
+        <activity android:name=".activitys.learningactivitys.AnswerActivity" />
+        <activity android:name=".activitys.learningactivitys.StudyCardActivity" />
         <activity
             android:name=".activitys.learningactivitys.XbSectionDetailActivity"
             android:hardwareAccelerated="true" />
@@ -74,7 +86,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activitys.MainActivity" />
 
-        <service android:name="com.example.yichengxuetang.utils.AppService" />
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="11b0645c978128cea97843e9" />
