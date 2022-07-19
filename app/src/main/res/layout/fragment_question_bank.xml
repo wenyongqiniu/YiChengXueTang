@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/question_bank_shape"
     tools:context=".fragments.QuestionBankFragment">
 
     <TextView
@@ -18,243 +17,41 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="1dp"
-        android:layout_height="25.5dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@id/tv_learning_center"
-        android:background="#ECEAEA" />
-
     <TextView
-        android:id="@+id/tv_course_type"
+        android:layout_marginEnd="8dp"
+        android:id="@+id/tv_exchange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="22dp"
-        android:layout_toEndOf="@id/view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18.5dp"
+        android:background="@drawable/exchange_shape"
+        android:paddingStart="17dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="17dp"
+        android:paddingBottom="5dp"
         android:text="淘宝无货源"
-        android:textColor="#fffe8000"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textColor="#5F5F5F"
+        android:textSize="12sp"
+        app:drawableEndCompat="@drawable/ic_baseline_arrow_drop_down_24" />
 
-    <ImageView
-        android:src="@drawable/triang"
-        android:layout_below="@id/tv_course_type"
-        android:layerType="none"
-        android:layout_marginTop="-12dp"
-        android:layout_toEndOf="@id/tv_course_type"
-        android:layout_width="10dp"
-        android:layout_height="10dp"/>
-
-
-    <LinearLayout
-        android:id="@+id/ll_exercise"
+    <com.google.android.material.tabs.TabLayout
+        android:background="#F8F8F8"
+        app:tabBackground="@color/tab_unseclet"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="scrollable"
+        app:tabPaddingStart="24dp"
+        android:id="@+id/tab_exercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_course_type"
-        android:orientation="horizontal">
+        android:layout_below="@id/tv_learning_center"
+        android:layout_marginTop="18dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_order_question"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="25.5dp"
-            android:layout_marginEnd="6dp"
-            android:layout_weight="1"
-            android:background="@mipmap/order_exercise">
-
-            <TextView
-                android:id="@+id/tv_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/order_exercise"
-                android:textColor="#ff439b9c"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_order"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
-                android:text="12 / 458"
-                android:textColor="#ff69b9ba"
-                android:textSize="12sp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_test"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="24.5dp"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:layout_weight="1"
-            android:background="@mipmap/test_question">
-
-            <TextView
-                android:id="@+id/tv_text_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/test_quiestion"
-                android:textColor="#ffb93636"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_text_question"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
-                android:text="上次得分98分"
-                android:textColor="#ffcf5f5f"
-                android:textSize="12sp" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_wrong_book"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_exercise"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/ll_exercise"
-        android:layout_marginTop="38dp">
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_exercise" />
 
-        <TextView
-            android:id="@+id/tv_wrong_book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="23dp"
-            android:drawablePadding="14.5dp"
-            android:gravity="center"
-            android:text="@string/wrong_book"
-            android:textColor="#ff353535"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@mipmap/error_book" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:drawablePadding="16dp"
-            android:paddingEnd="16dp"
-            android:text="共有 38 道题目"
-            android:textColor="#ff272727"
-            android:textSize="13sp"
-            app:drawableEndCompat="@mipmap/right_to" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_exercise_record"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/rl_wrong_book"
-        android:layout_marginTop="14dp">
-
-        <TextView
-            android:id="@+id/tv_exercise_rocord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="23dp"
-            android:drawablePadding="14.5dp"
-            android:text="@string/exercise_record"
-            android:textColor="#ff353535"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@mipmap/exercise_record" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:drawablePadding="16dp"
-            android:paddingEnd="16dp"
-            android:text=""
-            android:textColor="#ff272727"
-            android:textSize="13sp"
-            app:drawableEndCompat="@mipmap/right_to" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_favorites"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/rl_exercise_record"
-        android:layout_marginTop="14dp">
-
-        <TextView
-            android:id="@+id/tv_favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="23dp"
-            android:drawablePadding="14.5dp"
-            android:text="@string/favorites"
-            android:textColor="#ff353535"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@mipmap/favorates" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:drawablePadding="16dp"
-            android:paddingEnd="16dp"
-            android:text=""
-            android:textColor="#ff272727"
-            android:textSize="13sp"
-            app:drawableEndCompat="@mipmap/right_to" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_ranking_list"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/rl_favorites"
-        android:layout_marginTop="14dp">
-
-        <TextView
-            android:drawablePadding="14.5dp"
-            android:id="@+id/tv_ranking_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="23dp"
-            android:text="@string/ranking_list"
-            android:textColor="#ff353535"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@mipmap/ranking_list" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:drawablePadding="16dp"
-            android:paddingEnd="16dp"
-            android:text=""
-            android:textColor="#ff272727"
-            android:textSize="13sp"
-            app:drawableEndCompat="@mipmap/right_to" />
-
-    </RelativeLayout>
 
 </RelativeLayout>

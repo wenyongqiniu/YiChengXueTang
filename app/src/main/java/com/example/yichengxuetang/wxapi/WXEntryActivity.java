@@ -15,6 +15,7 @@ import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.contract.BindingWechatContract;
 import com.example.yichengxuetang.utils.CustomerToastUtils;
 import com.example.yichengxuetang.utils.ToastUtils;
+import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.SpUtils;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -94,6 +95,7 @@ public class WXEntryActivity extends MvpActivity<BindingWechatContract.BindingWe
     public void getWxLogin(LoginWxResponse loginWxResponse) {
         if (loginWxResponse.getCode()==0){//登录成功
             SpUtils.putSpString(getApplication(),"token",loginWxResponse.getData().getToken());
+            BaseApplication.token=loginWxResponse.getData().getToken();
             startActivity(new Intent(WXEntryActivity.this, MainActivity.class));
             finish();
         }else{

@@ -60,7 +60,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
 
     private static final String TAG = "JIGUANG";
     private JVerifyUIConfig.Builder uiConfig;
-    private String msgCode="";
+    private String msgCode = "";
     private boolean isChecked;
     private LoginSettings settings;
 
@@ -71,10 +71,10 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
         CheckBox check = findViewById(R.id.check);
         ImageView iv_wx_login = findViewById(R.id.iv_wx_login);
         String msgCode2 = SpUtils.getSpString(LoginActivity.this, "msgCode", "");
-        if ("checkbox checked.".equals(msgCode2)){
-           isChecked=true;
-        }else{
-            isChecked=false;
+        if ("checkbox checked.".equals(msgCode2)) {
+            isChecked = true;
+        } else {
+            isChecked = false;
         }
 
         //check是否选中监听
@@ -113,7 +113,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initOneClickLogin() {
-        StatusBarUtils.setColor(this,Color.parseColor("#000000"));
+        StatusBarUtils.setColor(this, Color.parseColor("#000000"));
         settings = new LoginSettings();
         settings.setAutoFinish(false);//设置登录完成后是否自动关闭授权页
         settings.setTimeout(15 * 1000);//设置超时时间，单位毫秒。 合法范围（0，30000],范围以外默认设置为10000
@@ -122,24 +122,24 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
             public void onEvent(int cmd, String msg) {
                 //do something...
                 String msgCode2 = SpUtils.getSpString(LoginActivity.this, "msgCode", "");
-                if ("checkbox checked.".equals(msgCode2)){
-                    msgCode="checkbox checked.";
-                }else{
+                if ("checkbox checked.".equals(msgCode2)) {
+                    msgCode = "checkbox checked.";
+                } else {
                     msgCode = msg;
                 }
-                if ("checkbox checked.".equals(msg)){
-                    SpUtils.putSpString(LoginActivity.this,"msgCode",msgCode);
+                if ("checkbox checked.".equals(msg)) {
+                    SpUtils.putSpString(LoginActivity.this, "msgCode", msgCode);
                 }
-                if (!"checkbox checked.".equals(msg)&&"checkbox unchecked.".equals(msg)){
-                    SpUtils.remove(LoginActivity.this,"msgCode");
+                if (!"checkbox checked.".equals(msg) && "checkbox unchecked.".equals(msg)) {
+                    SpUtils.remove(LoginActivity.this, "msgCode");
                     msgCode = msg;
                 }
             }
         });//设置授权页事件监听
         JVerificationInterface.loginAuth(this, settings, (code, content, operator) -> {
             if (code == 6000) {
-                    Log.d(TAG, "code=" + code + ", token=" + content + " ,operator=" + operator);
-                    igniteGetPhone(content);
+                Log.d(TAG, "code=" + code + ", token=" + content + " ,operator=" + operator);
+                igniteGetPhone(content);
             } else {
                 Log.d(TAG, "code=" + code + ", message=" + content);
             }
@@ -270,7 +270,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
                 .setPrivacyCheckboxHidden(false)
                 .addCustomView(mBtn, false, (context, view) -> {
                     if (msgCode.equals("checkbox checked.")) {
-                        SpUtils.putSpString(LoginActivity.this,"msgCode",msgCode);
+                        SpUtils.putSpString(LoginActivity.this, "msgCode", msgCode);
                         startActivity(new Intent(LoginActivity.this, VcLoginActivity.class));
                     } else {
                         CustomerToastUtils.toastShow(this).show();
@@ -423,13 +423,19 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initData(Bundle savedInstanceState) {
+        String token = SpUtils.getSpString(context, "token", "");
+        if (!"".equals(token)) {
+            BaseApplication.token = token;
+            startActivity(new Intent(context, MainActivity.class));
+            finish();
+        }
         StatusBarUtils.setColor(this, Color.parseColor("#FFFFFF"));
         StatusBarUtils.setTextDark(this, true);
-       // BaseApplication.getActivityManager().addActivity(this);
+        // BaseApplication.getActivityManager().addActivity(this);
         boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
         if (!verifyEnable) {
             initViewNoSms();
-            ToastUtils.showShort(this, "当前网络环境不支持认证");
+            //ToastUtils.showShort(this, "当前网络环境不支持认证");
         } else {
             initOneClickLogin();
         }
@@ -449,7 +455,7 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       // SpUtils.remove(this,"msgCode");
+        // SpUtils.remove(this,"msgCode");
     }
 
 }

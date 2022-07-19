@@ -1,5 +1,6 @@
 package com.example.yichengxuetang.fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.yichengxuetang.R;
+import com.example.yichengxuetang.activitys.logins.LoginActivity;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.contract.LearningCenterContract;
 import com.google.android.material.tabs.TabLayout;
@@ -129,6 +131,9 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
 
                 }
             });
+        } else if (wallPaperResponse.getCode() == 1017) {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().finish();
         } else {
             page_layout.setPage(PageState.STATE_EMPTY);
         }
@@ -137,7 +142,7 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
 
     @Override
     public void getFailed(Throwable e) {
-       // sml_learning.setRefreshing(false);
+        // sml_learning.setRefreshing(false);
         page_layout.setPage(PageState.STATE_ERROR);
     }
 
