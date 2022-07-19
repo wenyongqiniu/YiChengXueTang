@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -41,13 +40,15 @@
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activitys.questionbankactivitys.SimultionResultActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.SimulationActivity" />
+        <activity android:name=".activitys.questionbankactivitys.SmartTopicActivity" />
         <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity" />
         <activity android:name=".activitys.questionbankactivitys.OrderExerciseActivity" />
         <activity android:name=".activitys.questionbankactivitys.TestExerciseActivity" />
         <activity android:name=".activitys.learningactivitys.BigImageActivity" />
         <activity android:name=".activitys.learningactivitys.DoHomeWorkActivity" />
         <activity android:name=".activitys.learningactivitys.ExamActivity" />
-
         <activity android:name=".activitys.learningactivitys.AnswerActivity" />
         <activity android:name=".activitys.learningactivitys.StudyCardActivity" />
         <activity
