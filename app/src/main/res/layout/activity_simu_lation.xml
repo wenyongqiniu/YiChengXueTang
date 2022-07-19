@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/simulation_shape"
+    tools:context=".activitys.questionbankactivitys.SmartTopicActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_left_out"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/left_out" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/smart_shape">
+
+        <TextView
+            android:id="@+id/tv_big_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:text="模拟演练"
+            android:textColor="#BE3333"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_big_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:lineSpacingExtra="5dp"
+            android:text="该模拟包含常识判断、资料分析 判断推理、数量关系、言语理解 与表达五大模块。 考试共随机抽取110题， 总时限 120分钟。"
+            android:textColor="#A35C47"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_start_do"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/tv_tips"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="56dp"
+            android:background="@drawable/login_phone_shape"
+            android:gravity="center"
+            android:text="开始模拟"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/rl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-35dp"
+        android:src="@mipmap/simulations" />
+</RelativeLayout>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/test_exercise_shape"
+    tools:context=".activitys.questionbankactivitys.OrderExerciseActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_left_out"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/left_out" />
+    </RelativeLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/tv_order_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_left_out"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:text="@string/test_exercise"
+        android:textColor="#B93636"
+        android:textSize="30sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_exercise"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="19.5dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/exercise_shape">
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40.5dp"
+            android:layout_marginTop="27.5dp"
+            android:text="90"
+            android:textColor="#fffe8000"
+            android:textSize="60sp" />
+
+
+        <TextView
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_below="@id/mark"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/dotted_line_shape" />
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="5dp"
+            android:layout_height="10dp"
+            android:layout_below="@id/mark"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/half_round_left_shape" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="5dp"
+            android:layout_height="10dp"
+            android:layout_below="@id/mark"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/half_round_right_shape" />
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_below="@id/mark"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="23.5dp"
+            android:layout_toEndOf="@id/tv_left"
+            android:background="@drawable/round_shape" />
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_below="@id/mark"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="23.5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/round_shape" />
+
+        <TextView
+            android:id="@+id/tv_mark_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mark"
+            android:layout_marginTop="-45dp"
+            android:layout_toEndOf="@id/mark"
+            android:text="分"
+            android:textColor="#fffe8000"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/last_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="45dp"
+            android:layout_toEndOf="@id/tv_mark_text"
+            android:text="上次模拟分数"
+            android:textColor="#ff2b2b2b"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/last_mark"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/tv_mark_text"
+            android:text="距离上次模拟已过 0 天"
+            android:textColor="#ff535353"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/test_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="15dp"
+            android:background="#FFF2E2">
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_test_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25.5dp"
+                android:layout_marginTop="22.5dp"
+                android:text="考试标准：2小时"
+                android:textColor="#ffa75e02"
+                android:textSize="14sp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_test_strand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_test_time"
+                android:layout_marginStart="25.5dp"
+                android:layout_marginTop="10dp"
+                android:text="考题标准：100题（80单选，20多选）"
+                android:textColor="#ffa75e02"
+                android:textSize="14sp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_test_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_test_strand"
+                android:layout_marginStart="25.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="19dp"
+                android:text="60分合格（满分100分）"
+                android:textColor="#ffa75e02"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/ll_test_situation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/test_tips"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="36"
+                    android:textColor="#fffe7400"
+                    android:textSize="33sp" />
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="92.7"
+                    android:textColor="#fffe7400"
+                    android:textSize="33sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="已模拟次数"
+                    android:textColor="#6E6E6E"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="模拟平均分"
+                    android:textColor="#6E6E6E"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42.5dp"
+            android:layout_below="@id/ll_test_situation"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="41dp"
+            android:background="@drawable/login_phone_shape"
+            android:gravity="center"
+            android:text="开始模拟考试"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</RelativeLayout>

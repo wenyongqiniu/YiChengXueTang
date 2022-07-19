@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.questionbankactivitys.SimultionResultActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/simulation_result_shape">
+
+        <RelativeLayout
+            android:layout_marginTop="25dp"
+            android:id="@+id/rl_left_out"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/left_arrow_white" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:layout_toEndOf="@id/rl_left_out"
+            android:gravity="center"
+            android:text="模拟演练结果分析"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <com.example.yichengxuetang.utils.ArcProgressBar
+          android:layout_centerHorizontal="true"
+            android:layout_below="@id/rl_left_out"
+            android:id="@+id/cpv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

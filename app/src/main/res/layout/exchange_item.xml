@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textStyle="bold"
+        android:paddingEnd="21dp"
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/excahnge_yes_shape"
+        android:paddingStart="18dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:text="短视频带货实操课"
+        android:textColor="#FE7400"
+        android:textSize="18sp"
+        app:drawableEndCompat="@mipmap/exchange_right" />
+
+</RelativeLayout>

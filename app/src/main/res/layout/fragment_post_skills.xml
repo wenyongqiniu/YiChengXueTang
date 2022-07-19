@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.practicecenter.PublicSubjectsFragment">
+
+    <LinearLayout
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="历年真题"
+            android:textColor="#ff3a3a3a"
+            android:textSize="13sp"
+            app:drawableTopCompat="@mipmap/real_topic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/learn_report"
+            android:gravity="center"
+            android:text="学习报告"
+            android:textColor="#ff3a3a3a"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/error_redo"
+            android:gravity="center"
+            android:text="错题重做"
+            android:textColor="#ff3a3a3a"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/collect_ti"
+            android:gravity="center"
+            android:text="收藏题目"
+            android:textColor="#ff3a3a3a"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginStart="22.5dp"
+        android:layout_marginTop="33dp"
+        android:layout_below="@id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="专项练习"
+        android:textColor="#ff2a2a2a"
+        android:textSize="18sp"
+        />
+
+
+</RelativeLayout>

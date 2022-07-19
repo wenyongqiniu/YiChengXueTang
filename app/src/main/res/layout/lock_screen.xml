@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/music_shape">
+
+    <com.example.yichengxuetang.utils.RoundImageView
+        android:id="@+id/iv_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@mipmap/dake_top" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12sp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@id/iv_music"
+        android:text="只00后额我们"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginStart="12sp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@id/iv_music"
+        android:text="只00后额我们"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/iv_pause"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@id/tv_title"
+        android:src="@mipmap/out_continiu" />
+
+    <ImageView
+        android:id="@+id/iv_next"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:src="@mipmap/next_music" />
+</RelativeLayout>
