@@ -31,6 +31,8 @@ import java.util.List;
 import cn.jiguang.verifysdk.api.JVerificationInterface;
 import io.rong.imkit.conversationlist.ConversationListFragment;
 
+import static com.example.yichengxuetang.application.MyApplication.getActivityManager;
+
 
 /**
  * @author llw
@@ -39,7 +41,6 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        // BaseApplication.getActivityManager().finishActivity(LoginActivity.class);
         JVerificationInterface.dismissLoginAuthActivity(true, (code, desc) -> {
 
         });
@@ -53,7 +54,7 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
      * 初始化列表
      */
     private void initView() {
-
+        getActivityManager().finishActivity(LoginActivity.class);
         StatusBarUtils.setColor(this, Color.parseColor("#F8F8F8"));
         StatusBarUtils.setTextDark(this, true);
         BottomBar bottomBar = findViewById(R.id.bottom_navigation);

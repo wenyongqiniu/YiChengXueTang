@@ -50,11 +50,13 @@ public class MyApplication extends Application {
     public static final String APP_ID = "wxf39af9ce5edcad58";//微信
 
     public static final String WEB_SOCKET = "ws://testycapi.xicaishe.com/studyrecord/";
-
+    private static ActivityManager activityManager;
     @Override
     public void onCreate() {
         super.onCreate();
         mContext = this;
+
+        activityManager = new ActivityManager();
         //初始化
         NetworkRequiredInfo networkRequiredInfo = new NetworkRequiredInfo(this);
         boolean debug = networkRequiredInfo.isDebug();
@@ -108,5 +110,9 @@ public class MyApplication extends Application {
         req.scope = "snsapi_userinfo";
         req.state = "wechat_binding";
         api.sendReq(req);
+    }
+
+    public static ActivityManager getActivityManager() {
+        return activityManager;
     }
 }

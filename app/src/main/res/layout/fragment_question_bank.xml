@@ -18,12 +18,12 @@
         android:textStyle="bold" />
 
     <TextView
-        android:layout_marginEnd="8dp"
         android:id="@+id/tv_exchange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="18.5dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/exchange_shape"
         android:paddingStart="17dp"
         android:paddingTop="5dp"
@@ -35,23 +35,29 @@
         app:drawableEndCompat="@drawable/ic_baseline_arrow_drop_down_24" />
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_exercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_learning_center"
+        android:layout_marginTop="18dp"
         android:background="#F8F8F8"
         app:tabBackground="@color/tab_unseclet"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
-        app:tabPaddingStart="24dp"
-        android:id="@+id/tab_exercise"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_learning_center"
-        android:layout_marginTop="18dp" />
+        app:tabPaddingStart="24dp" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp2_exercise"
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/tab_exercise"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tab_exercise" />
+        android:fillViewport="true">
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+          />
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.yichengxuetang.R;
+import com.example.yichengxuetang.bean.LearningCenterResponse;
+import com.example.yichengxuetang.bean.QuestionBankTypeResponse;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,21 +26,21 @@ import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.MessageContent;
 
 
-public class ExchangeAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class ExchangeAdapter extends BaseQuickAdapter<QuestionBankTypeResponse.DataBean, BaseViewHolder> {
 
 
-    public ExchangeAdapter(int layoutResId, @Nullable List<String> data) {
+    public ExchangeAdapter(int layoutResId, @Nullable List<QuestionBankTypeResponse.DataBean> data) {
         super(layoutResId, data);
     }
 
 
     @Override
-    protected void convert(@NotNull BaseViewHolder baseViewHolder, String conversation) {
+    protected void convert(@NotNull BaseViewHolder baseViewHolder, QuestionBankTypeResponse.DataBean conversation) {
 
         TextView tv_title = baseViewHolder.getView(R.id.tv_title);
-        tv_title.setText(conversation);
+        tv_title.setText(conversation.getName());
 
-        if (baseViewHolder.getLayoutPosition()==0){
+        if (conversation.getChoice()==1){
             tv_title.setBackgroundResource(R.drawable.excahnge_yes_shape);
             tv_title.setTextColor(Color.parseColor("#FE7400"));
             tv_title.setCompoundDrawablesWithIntrinsicBounds(null,null,getContext().getDrawable(R.mipmap.exchange_right),null);

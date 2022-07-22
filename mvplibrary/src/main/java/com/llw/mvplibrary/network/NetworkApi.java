@@ -51,7 +51,7 @@ public class NetworkApi {
         isFormal = NetworkEnvironmentActivity.isFormalEnvironment(networkRequiredInfo.getApplicationContext());
         if (!isFormal) {
             //正式环境
-            mBaseUrl = "https://ycapi.xicaishe.com/";
+            mBaseUrl = "https://testycapi.xicaishe.com/";
         } else {
             //测试环境
             mBaseUrl = "https://testycapi.xicaishe.com/";

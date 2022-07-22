@@ -89,8 +89,7 @@ public class ArcProgressBar extends View {
      */
     private int mThirdTextColor = Color.WHITE;
     /**
-     * 第三行文本的字体大小
-     */
+     * 第三行文本的字体大小。？     */
     private float mThirdTextSize = 30f;
 
     //文本背景高度
@@ -175,7 +174,7 @@ public class ArcProgressBar extends View {
         mPaint.setAntiAlias(true);
         rectF.top = getHeight() * 4 / 5;
         rectF.left = getWidth() / 4 + 10;
-        rectF.right = getWidth() * 3 / 4-10;
+        rectF.right = getWidth() * 3 / 4 - 10;
         //画笔的颜色
         mPaint.setColor(mTextBgColor);
         //画笔的样式 Paint.Cap.Round 圆形,Cap.SQUARE 方形

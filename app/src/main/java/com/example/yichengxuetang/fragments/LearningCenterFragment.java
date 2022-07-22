@@ -18,6 +18,7 @@ import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.activitys.logins.LoginActivity;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.contract.LearningCenterContract;
+import com.example.yichengxuetang.utils.CustomerToastUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.ljb.page.PageState;
@@ -133,6 +134,8 @@ public class LearningCenterFragment extends MvpFragment<LearningCenterContract.L
             });
         } else if (wallPaperResponse.getCode() == 1017) {
             startActivity(new Intent(getActivity(), LoginActivity.class));
+            CustomerToastUtils.toastShow(context).show();
+            CustomerToastUtils.tv_toast.setText("登录超时，请重新登录");
             getActivity().finish();
         } else {
             page_layout.setPage(PageState.STATE_EMPTY);

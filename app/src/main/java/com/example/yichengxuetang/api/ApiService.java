@@ -12,6 +12,7 @@ import com.example.yichengxuetang.bean.ContractResponse;
 import com.example.yichengxuetang.bean.CourseTimeResponse;
 import com.example.yichengxuetang.bean.DakeStepResponse;
 import com.example.yichengxuetang.bean.DkCourseListResponse;
+import com.example.yichengxuetang.bean.ExamBranchRsponse;
 import com.example.yichengxuetang.bean.ExamInfoResponse;
 import com.example.yichengxuetang.bean.ExamTaskInfoResponse;
 import com.example.yichengxuetang.bean.FindNoteResponse;
@@ -27,6 +28,9 @@ import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.bean.MyClassResponse;
 import com.example.yichengxuetang.bean.NoteDetailResponse;
 import com.example.yichengxuetang.bean.PhoneLoginResponse;
+import com.example.yichengxuetang.bean.QuestionBankResponse;
+import com.example.yichengxuetang.bean.QuestionBankTypeResponse;
+import com.example.yichengxuetang.bean.QuestionInfoResponse;
 import com.example.yichengxuetang.bean.ResetExamResponse;
 import com.example.yichengxuetang.bean.ResetPasswordResponse;
 import com.example.yichengxuetang.bean.SealContractResponse;
@@ -149,6 +153,18 @@ public interface ApiService {
     @POST("api/studycenter/index")
     Observable<LearningCenterResponse> getLearningCenter(@Body RequestBody body);
 
+    //题库-业务列表
+    @POST("api/exam/getCourseTypeList")
+    Observable<QuestionBankTypeResponse> getQuestionBankType(@Body RequestBody body);
+
+    //题库-获取答题批次
+    @POST("api/exam/getExamBatch")
+    Observable<ExamBranchRsponse> getExamBatch(@Body RequestBody body);
+
+    //题库-获取答题批次
+    @POST("api/exam/getQusetionInfo")
+    Observable<QuestionInfoResponse> getQuestionInfo(@Body RequestBody body);
+
     //首页-查询课程列表
     @POST("api/studycenter/getCourse")
     Observable<ShowCourseListResponse> getShowCourseListCenter(@Body RequestBody body);
@@ -224,5 +240,9 @@ public interface ApiService {
     //领取毕业证
     @POST("api/studycenter/getExamCard")
     Observable<StudyCardResponse> getStudyCard(@Body RequestBody body);
+
+    //查询题库类型
+    @POST("api/exam/getExamQuestionTypeList")
+    Observable<QuestionBankResponse> getQuestionBankResponse(@Body RequestBody body);
 
 }

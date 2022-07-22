@@ -29,6 +29,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/smart_shape">
 
+
         <TextView
             android:id="@+id/tv_big_title"
             android:layout_width="wrap_content"
@@ -37,25 +38,63 @@
             android:layout_marginTop="65dp"
             android:text="模拟演练"
             android:textColor="#BE3333"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_tips"
-            android:layout_width="182dp"
+            android:layout_width="229dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_big_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:lineSpacingExtra="5dp"
-            android:text="该模拟包含常识判断、资料分析 判断推理、数量关系、言语理解 与表达五大模块。 考试共随机抽取110题， 总时限 120分钟。"
+            android:background="#FFF2E2"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="18dp"
+            android:text="该模拟包含常识判断、资料分析 判断推理、数量关系、言语理解与表达五大模块。 "
             android:textColor="#A35C47"
             android:textSize="14sp" />
+
+        <TextView
+            android:paddingTop="5dp"
+            android:id="@+id/tv_tips2"
+            android:layout_width="229dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tips"
+            android:layout_centerHorizontal="true"
+            android:background="#FFF2E2"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="18dp"
+            android:text="考试共随机抽取110道题，总时限120分钟。"
+            android:textColor="#A35C47"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_alignStart="@id/tv_tips"
+            android:layout_alignTop="@id/tv_tips"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/tips_simulation_shape" />
+
+        <ImageView
+            android:layout_marginTop="12dp"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_alignStart="@id/tv_tips2"
+            android:layout_alignTop="@id/tv_tips2"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/tips_simulation_shape" />
+
 
         <TextView
             android:id="@+id/tv_start_do"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:layout_below="@id/tv_tips"
+            android:layout_below="@id/tv_tips2"
             android:layout_marginStart="32dp"
             android:layout_marginTop="31dp"
             android:layout_marginEnd="32dp"

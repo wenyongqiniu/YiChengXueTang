@@ -55,6 +55,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.yichengxuetang.application.MyApplication.getActivityManager;
+
 
 public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter> implements VcLoginContract.VcLoginView {
 
@@ -423,21 +425,21 @@ public class LoginActivity extends MvpActivity<VcLoginContract.VcLoginPresenter>
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initData(Bundle savedInstanceState) {
+        StatusBarUtils.setColor(this, Color.parseColor("#FFFFFF"));
+        StatusBarUtils.setTextDark(this, true);
+        getActivityManager().addActivity(this);
         String token = SpUtils.getSpString(context, "token", "");
         if (!"".equals(token)) {
             BaseApplication.token = token;
             startActivity(new Intent(context, MainActivity.class));
-            finish();
-        }
-        StatusBarUtils.setColor(this, Color.parseColor("#FFFFFF"));
-        StatusBarUtils.setTextDark(this, true);
-        // BaseApplication.getActivityManager().addActivity(this);
-        boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
-        if (!verifyEnable) {
-            initViewNoSms();
-            //ToastUtils.showShort(this, "当前网络环境不支持认证");
         } else {
-            initOneClickLogin();
+            boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
+            if (!verifyEnable) {
+                initViewNoSms();
+                //ToastUtils.showShort(this, "当前网络环境不支持认证");
+            } else {
+                initOneClickLogin();
+            }
         }
     }
 

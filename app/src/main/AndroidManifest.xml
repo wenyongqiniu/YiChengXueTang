@@ -40,7 +40,9 @@
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activitys.questionbankactivitys.SimultionResultActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.OnlyActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.SmartDoHomeworkctivity" />
+        <activity android:name=".activitys.questionbankactivitys.SimultionResultActivity" />
         <activity android:name=".activitys.questionbankactivitys.SimulationActivity" />
         <activity android:name=".activitys.questionbankactivitys.SmartTopicActivity" />
         <activity android:name=".activitys.messageactivitys.PrivateConvesationActivity" />
