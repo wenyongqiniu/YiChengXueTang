@@ -22,11 +22,17 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.yichengxuetang.R;
 import com.example.yichengxuetang.adapter.ExchangeAdapter;
+import com.example.yichengxuetang.bean.BatchMenuListSimluResponse;
+import com.example.yichengxuetang.bean.CollectQuestionSuccessResponse;
+import com.example.yichengxuetang.bean.CommitSuccessResponse;
 import com.example.yichengxuetang.bean.ExamBranchRsponse;
+import com.example.yichengxuetang.bean.InterruptOnlyResponse;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.QuestionBankResponse;
 import com.example.yichengxuetang.bean.QuestionBankTypeResponse;
 import com.example.yichengxuetang.bean.QuestionInfoResponse;
+import com.example.yichengxuetang.bean.QuestionListResponse;
+import com.example.yichengxuetang.bean.QuestionMuluResponse;
 import com.example.yichengxuetang.contract.QuestionBankContract;
 import com.example.yichengxuetang.fragments.practicecenter.PostSkillsFragment;
 import com.example.yichengxuetang.fragments.practicecenter.PublicSubjectsFragment;
@@ -52,7 +58,7 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
     private ViewPager2 vp2_exercise;
     private TabLayout tab_exercise;
     private TextView tv_exchange;
-    private List<QuestionBankResponse.DataBean> data;
+
     private PageStateLayout page_layout;
 
     public QuestionBankFragment() {
@@ -63,7 +69,7 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
 
     @Override
     public void getFailed(Throwable e) {
-
+        page_layout.setPage(PageState.STATE_ERROR);
     }
 
     @Override
@@ -75,7 +81,7 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
     public void getWallPaper(QuestionBankResponse wallPaperResponse) {
 
         if (wallPaperResponse.getCode() == 0) {
-            data = wallPaperResponse.getData();
+            List<QuestionBankResponse.DataBean> data = wallPaperResponse.getData();
             ArrayList<Fragment> fragments = new ArrayList<>();
 
             for (int i = 0; i < data.size(); i++) {
@@ -117,7 +123,8 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
             toMyTextView.setTextColor(Color.parseColor("#2A2A2A"));
             Bundle bundle = new Bundle();
             bundle.putString("parentId", data.get(0).getId() + "");
-            bundle.putIntegerArrayList("needHiddenIconlist",data.get(0).getNeedHiddenIcon());
+            bundle.putString("courseType", busiTypeCode + "");
+            bundle.putIntegerArrayList("needHiddenIconlist", data.get(0).getNeedHiddenIcon());
             fragments.get(0).setArguments(bundle);
             //看这里看这里看这里
             tab_exercise.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -135,7 +142,8 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
                         tv.invalidate();
                         Bundle bundle = new Bundle();
                         bundle.putString("parentId", data.get(position).getId() + "");
-                        bundle.putIntegerArrayList("needHiddenIconlist",data.get(position).getNeedHiddenIcon());
+                        bundle.putString("courseType", busiTypeCode + "");
+                        bundle.putIntegerArrayList("needHiddenIconlist", data.get(position).getNeedHiddenIcon());
                         fragments.get(position).setArguments(bundle);
                         tab.getCustomView().findViewById(R.id.tv_top_item).setSelected(true);
                     }
@@ -176,13 +184,6 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
             courseTypeList.get(0).setChoice(1);
             mPresenter.getQuestionBank(queryType + "", busiTypeCode + "", "");
 
-           /* new XPopup.Builder(context)
-                    .moveUpToKeyboard(false) //如果不加这个，评论弹窗会移动到软键盘上面
-                    .enableDrag(false)
-                    .dismissOnBackPressed(false)
-                    .maxHeight(ScreenUtils.getScreenHeight(context) * 2 / 3)
-                    .asCustom(new ExchangePopup(context, courseTypeList))
-                    .show();*/
         }
     }
 
@@ -192,7 +193,43 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
     }
 
     @Override
+    public void getQuestionInfoList(QuestionListResponse wallPaperResponse) {
+
+    }
+
+    @Override
     public void getExamBranch(ExamBranchRsponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getQuestionSubmit(CommitSuccessResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getPauseTime(CommitSuccessResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getQuestionCollect(CollectQuestionSuccessResponse wallPaperResponse) {
+
+
+    }
+
+    @Override
+    public void getQuestionMulu(QuestionMuluResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getQuestionMuluSimlu(BatchMenuListSimluResponse wallPaperResponse) {
+
+    }
+
+    @Override
+    public void getInterrputOnly(InterruptOnlyResponse wallPaperResponse) {
 
     }
 
@@ -285,12 +322,17 @@ public class QuestionBankFragment extends MvpFragment<QuestionBankContract.Quest
                         .asCustom(new ExchangePopup(context, courseTypeList))
                         .show();
                 //data.clear();
-               // mPresenter.getQuestionBank(queryType + "", busiTypeCode + "", "");
+                // mPresenter.getQuestionBank(queryType + "", busiTypeCode + "", "");
 
             }
         });
+        TextView retry = rootView.findViewById(R.id.retry);
 
-
+        //点击重试
+        retry.setOnClickListener(v -> {
+            page_layout.setPage(PageState.STATE_LOADING);
+            mPresenter.getQuestionBankType();
+        });
     }
 
     @Override

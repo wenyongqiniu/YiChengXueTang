@@ -4,8 +4,10 @@ package com.example.yichengxuetang.api;
 import com.example.yichengxuetang.bean.AddAddressResponse;
 import com.example.yichengxuetang.bean.AddressListResponse;
 import com.example.yichengxuetang.bean.AddressResponse;
+import com.example.yichengxuetang.bean.BatchMenuListSimluResponse;
 import com.example.yichengxuetang.bean.BindingWechatResponse;
 import com.example.yichengxuetang.bean.CheckVcCodeResponse;
+import com.example.yichengxuetang.bean.CollectQuestionSuccessResponse;
 import com.example.yichengxuetang.bean.CommitSuccessResponse;
 import com.example.yichengxuetang.bean.ConfirmCourseTineResponse;
 import com.example.yichengxuetang.bean.ContractResponse;
@@ -23,6 +25,7 @@ import com.example.yichengxuetang.bean.GroupNoticeBean;
 import com.example.yichengxuetang.bean.GroupNumberResponse;
 import com.example.yichengxuetang.bean.HetongResponse;
 import com.example.yichengxuetang.bean.HomeWorkResponse;
+import com.example.yichengxuetang.bean.InterruptOnlyResponse;
 import com.example.yichengxuetang.bean.LearningCenterResponse;
 import com.example.yichengxuetang.bean.LoginWxResponse;
 import com.example.yichengxuetang.bean.MyClassResponse;
@@ -31,6 +34,8 @@ import com.example.yichengxuetang.bean.PhoneLoginResponse;
 import com.example.yichengxuetang.bean.QuestionBankResponse;
 import com.example.yichengxuetang.bean.QuestionBankTypeResponse;
 import com.example.yichengxuetang.bean.QuestionInfoResponse;
+import com.example.yichengxuetang.bean.QuestionListResponse;
+import com.example.yichengxuetang.bean.QuestionMuluResponse;
 import com.example.yichengxuetang.bean.ResetExamResponse;
 import com.example.yichengxuetang.bean.ResetPasswordResponse;
 import com.example.yichengxuetang.bean.SealContractResponse;
@@ -157,13 +162,33 @@ public interface ApiService {
     @POST("api/exam/getCourseTypeList")
     Observable<QuestionBankTypeResponse> getQuestionBankType(@Body RequestBody body);
 
+    //题库-查询批次目录
+    @POST("api/exam/getBatchMenuList")
+    Observable<QuestionMuluResponse> getQuestionMulu(@Body RequestBody body);
+
+    //题库-查询批次目录（模拟演练）
+    @POST("api/exam/getBatchMenuListForMN")
+    Observable<BatchMenuListSimluResponse> getQuestionMuluSimlu(@Body RequestBody body);
+
     //题库-获取答题批次
     @POST("api/exam/getExamBatch")
     Observable<ExamBranchRsponse> getExamBatch(@Body RequestBody body);
 
-    //题库-获取答题批次
+    //题库-获取答题详情
     @POST("api/exam/getQusetionInfo")
     Observable<QuestionInfoResponse> getQuestionInfo(@Body RequestBody body);
+
+    //题库-获取答题列表
+     @POST("api/exam/getQusetionList")
+    Observable<QuestionListResponse> getQuestionInfoList(@Body RequestBody body);
+
+    //题库-提交答案
+    @POST("api/exam/submitAnswer")
+    Observable<CommitSuccessResponse> getQuestionSubmit(@Body RequestBody body);
+
+    //题库-收藏/取消收藏题目
+    @POST("api/exam/collectQuestion")
+    Observable<CollectQuestionSuccessResponse> getQuestionCollect(@Body RequestBody body);
 
     //首页-查询课程列表
     @POST("api/studycenter/getCourse")
@@ -244,5 +269,17 @@ public interface ApiService {
     //查询题库类型
     @POST("api/exam/getExamQuestionTypeList")
     Observable<QuestionBankResponse> getQuestionBankResponse(@Body RequestBody body);
+
+    //暂停答题
+    @POST("api/exam/pauseBatch")
+    Observable<CommitSuccessResponse> getPauseTime(@Body RequestBody body);
+
+    //查询批次答题结果
+    @POST("api/exam/getExamBatchReport")
+    Observable<InterruptOnlyResponse> getInterruptOnly(@Body RequestBody body);
+
+    //查询批次答题结果
+    @POST("api/exam/getZXLXReport")
+    Observable<InterruptOnlyResponse> getOnlyResult(@Body RequestBody body);
 
 }
