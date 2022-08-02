@@ -53,17 +53,18 @@
 
 
         <TextView
+            android:gravity="center"
             android:id="@+id/tv_remmber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_tips"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="41.5dp"
-            android:drawableStart="@mipmap/un_checked_single"
             android:drawablePadding="5dp"
             android:text="下次不再提示"
             android:textColor="#ff6d6d6d"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:drawableStartCompat="@mipmap/un_checked_single" />
 
         <TextView
             android:id="@+id/tv_start_do"

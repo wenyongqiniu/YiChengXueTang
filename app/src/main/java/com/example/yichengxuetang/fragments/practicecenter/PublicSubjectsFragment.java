@@ -64,7 +64,7 @@ public class PublicSubjectsFragment extends MvpFragment<QuestionBankContract.Que
     private RecyclerView rv_only;
     private List<QuestionBankResponse.DataBean> listOnly;
     private OnlyAdapter onlyAdapter;
-    private int onFirst;
+    public static int onFirst;
     private RecyclerView rv_icon;
     private int gradePosition;
 
@@ -85,7 +85,16 @@ public class PublicSubjectsFragment extends MvpFragment<QuestionBankContract.Que
     @Override
     public void onResume() {
         super.onResume();
-        listOnly.clear();
+        //listOnly.clear();
+
+    }
+
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        //1专项练习 2 智能刷题 3模拟考试 4历年真题 5 错题库练习  6收藏题库练习 7学习报告
+        rv_icon = rootView.findViewById(R.id.rv_icon);
+        rv_only = rootView.findViewById(R.id.rv_only);
         assert getArguments() != null;
         parentId = getArguments().getString("parentId");
         courseType = getArguments().getString("courseType");
@@ -150,21 +159,9 @@ public class PublicSubjectsFragment extends MvpFragment<QuestionBankContract.Que
         rv_icon.setLayoutManager(new GridLayoutManager(context, 4));
         rv_icon.setAdapter(iconAdapter);
 
-    }
-
-
-    @Override
-    public void initData(Bundle savedInstanceState) {
-        //1专项练习 2 智能刷题 3模拟考试 4历年真题 5 错题库练习  6收藏题库练习 7学习报告
-        rv_icon = rootView.findViewById(R.id.rv_icon);
-        rv_only = rootView.findViewById(R.id.rv_only);
-
-
-
-
 
         listOnly = new ArrayList<>();
-        onlyAdapter = new OnlyAdapter(R.layout.item_only, listOnly, courseType,mPresenter);
+        onlyAdapter = new OnlyAdapter(R.layout.item_only, listOnly, courseType, mPresenter);
         rv_only.setLayoutManager(new LinearLayoutManager(context));
         rv_only.setAdapter(onlyAdapter);
 
@@ -213,9 +210,9 @@ public class PublicSubjectsFragment extends MvpFragment<QuestionBankContract.Que
 
         List<QuestionBankResponse.DataBean> data = wallPaperResponse.getData();
         if (wallPaperResponse.getCode() == 0) {
-            if (onFirst == 0) {
+            if (onFirst == 0) {//第一级
                 listOnly.addAll(data);
-            } else {
+            } else if (onFirst == 1) {//展开第二级
                 ArrayList<QuestionBankResponse.DataBean.TotalNumQBean> totalNumQBeans = new ArrayList<>();
                 for (int i = 0; i < data.size(); i++) {
                     QuestionBankResponse.DataBean.TotalNumQBean totalNumQBean = new QuestionBankResponse.DataBean.TotalNumQBean();
@@ -229,6 +226,8 @@ public class PublicSubjectsFragment extends MvpFragment<QuestionBankContract.Que
                     totalNumQBeans.add(totalNumQBean);
                     listOnly.get(gradePosition).setTotalNumQ(totalNumQBeans);
                 }
+
+            } else {
 
                 ArrayList<QuestionBankResponse.DataBean.TotalNumQBean.List1Bean> totalNumQBeans1 = new ArrayList<>();
                 for (int i = 0; i < data.size(); i++) {

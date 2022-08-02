@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_only"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F8F8F8">
+
+    <View
+        android:id="@+id/view"
+        android:background="#E6E6E6"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="12dp" />
+
+    <ImageView
+        android:id="@+id/iv_zhankai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_first"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="-5dp"
+        android:background="@mipmap/zhankai" />
+
+    <TextView
+        android:layout_below="@id/view"
+        android:id="@+id/tv_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/iv_zhankai"
+        android:text="言语理解与表达"
+        android:textColor="#ff2a2a2a"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_lates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/tv_first"
+        android:background="@drawable/answer_shape"
+        android:text="上次练习"
+        android:textColor="#FE8000"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_first"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@id/iv_zhankai"
+        android:text="已完成：12/240     正确率：12%"
+        android:textColor="#ff888888"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_fill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_first"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/fill" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_state"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="-2dp"
+        android:layout_toEndOf="@id/iv_zhankai" />
+
+
+
+</RelativeLayout>

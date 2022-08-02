@@ -128,4 +128,6 @@ dependencies {
     //环形进度条
     implementation 'com.github.jenly1314:circleprogressview:1.1.3'
 
+    //implementation 'com.lancewu:graceviewpager:2.0.0'
+
 }

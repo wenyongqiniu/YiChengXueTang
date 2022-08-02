@@ -20,7 +20,7 @@ public class ArcProgressBar2 extends View {
     /**
      * 圆弧的宽度
      */
-    private int mStrokeWidth = dp2px(8);
+    private int mStrokeWidth = dp2px(12);
     /**
      * 圆弧开始的角度
      */
@@ -52,7 +52,7 @@ public class ArcProgressBar2 extends View {
     /**
      * 进度圆弧的颜色
      */
-    private int mProgressColor = Color.RED;
+    private int mProgressColor = Color.WHITE;
     /**
      * 第一行文本
      */
@@ -60,11 +60,11 @@ public class ArcProgressBar2 extends View {
     /**
      * 第一行文本的颜色
      */
-    private int mFirstTextColor = Color.RED;
+    private int mFirstTextColor = Color.WHITE;
     /**
      * 第一行文本的字体大小
      */
-    private float mFirstTextSize = 56f;
+    private float mFirstTextSize = 100f;
     /**
      * 第二行文本
      */
@@ -72,11 +72,11 @@ public class ArcProgressBar2 extends View {
     /**
      * 第二行文本的颜色
      */
-    private int mSecondTextColor = Color.RED;
+    private int mSecondTextColor = Color.WHITE;
     /**
      * 第二行文本的字体大小
      */
-    private float mSecondTextSize = 56f;
+    private float mSecondTextSize = 36f;
 
 
     public ArcProgressBar2(Context context) {

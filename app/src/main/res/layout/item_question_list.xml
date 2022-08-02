@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_check"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/answer_shape">
+
+    <ImageView
+        android:id="@+id/iv_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="7dp"
+        android:background="@mipmap/question_single_true" />
+
+    <com.just.agentweb.AgentWebView
+        android:id="@+id/tv_title_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@id/iv_checked"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/tv_title_question1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:alpha="0" />
+
+
+</RelativeLayout>

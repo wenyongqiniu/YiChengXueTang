@@ -40,9 +40,12 @@
         android:theme="@style/Theme.YiChengXueTang"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activitys.questionbankactivitys.InterruptOnlyActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.AnalysisActivity"></activity>
+        <activity android:name=".activitys.questionbankactivitys.SmartResultActivity" />
+        <activity android:name=".activitys.questionbankactivitys.InterruptOnlyActivity" />
         <activity android:name=".activitys.questionbankactivitys.OnlyResultActivity" />
         <activity android:name=".activitys.questionbankactivitys.OnlyActivity" />
+        <activity android:name=".activitys.questionbankactivitys.Only2Activity" />
         <activity android:name=".activitys.questionbankactivitys.SmartDoHomeworkctivity" />
         <activity android:name=".activitys.questionbankactivitys.SimultionResultActivity" />
         <activity android:name=".activitys.questionbankactivitys.SimulationActivity" />

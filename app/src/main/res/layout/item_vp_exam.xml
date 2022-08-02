@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_choice_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:background="@drawable/single_stype_shape"
+            android:paddingStart="6dp"
+            android:paddingTop="1dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="1dp"
+            android:text="单选"
+            android:textColor="#E96A49"
+            android:textSize="12sp" />
+
+        <com.just.agentweb.AgentWebView
+            android:id="@+id/tv_quest_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_choice_type"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            android:scrollbars="none" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_answer_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_quest_title" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="188dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/rv_answer_list"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/login_phone_shape"
+            android:gravity="center"
+            android:text="确认答案"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_anlisy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rv_answer_list"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/rl_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3F3F3">
+
+                <TextView
+                    android:id="@+id/tv_right_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="正确答案：A"
+                    android:textColor="#ff2a2a2a"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_your_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="67dp"
+                    android:layout_toEndOf="@id/tv_right_answer"
+                    android:text="你的答案：D"
+                    android:textColor="#ff2a2a2a"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/rl_ad"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="25dp"
+                android:background="#FE8000" />
+
+            <TextView
+                android:id="@+id/tv_answer_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_ad"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="34dp"
+                android:text="分析与解答"
+                android:textColor="#ff2a2a2a"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.just.agentweb.AgentWebView
+                android:id="@+id/tv_anli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_answer_tips"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="46dp"
+                android:scrollbars="none"
+                android:text="在配置保险是我们要看，谁如果不在了，会使整个家庭的损失最大。我们要记住：保险保的不是人，而是钱。B，C选项不是最划算的做法。"
+                android:textColor="#ff555555"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -36,8 +36,7 @@
             android:text="模拟演练结果分析"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:textStyle="bold" />
 
         <com.example.yichengxuetang.utils.ArcProgressBar
             android:id="@+id/cpv"
@@ -45,7 +44,7 @@
             android:layout_height="200dp"
             android:layout_below="@id/rl_left_out"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-20dp" />
+            android:layout_marginTop="-10dp" />
 
     </RelativeLayout>
 
@@ -56,119 +55,198 @@
         android:layout_marginTop="-5dp"
         android:background="@drawable/music_list_shape">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="32dp"
-            android:text="练习专项：马克思主义基本原理"
-            android:textColor="#ff535353"
-            android:textSize="14sp" />
-
-
-        <TextView
-            android:id="@+id/tv_right_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="10dp"
-            android:text="正确率：73.92%"
-            android:textColor="#ff535353"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_right_rate"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="10dp"
-            android:text="总用时：00:34:12"
-            android:textColor="#ff535353"
-            android:textSize="14sp" />
-
-        <View
-            android:id="@+id/view_one"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_below="@id/tv_time"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="12dp"
-            android:background="#F3F3F3" />
-
         <RelativeLayout
-            android:id="@+id/rl_redo"
+            android:id="@+id/rl_tinum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/view_one">
 
-            <TextView
-                android:id="@+id/tv_redo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="15dp"
-                android:text="重新练习"
-                android:textColor="#ff2b2b2b"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="18dp"
+            android:background="#FFF2E2">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_redo"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="16dp"
-                android:text="清除该专项下所有答题记录，谨慎操作"
-                android:textColor="#ff535353"
-                android:textSize="12sp" />
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/tv_total_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="36"
+                    android:textColor="#fffe8000"
+                    android:textSize="29sp" />
+
+                <TextView
+                    android:id="@+id/tv_error_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#fffe8000"
+                    android:textSize="29sp" />
+
+                <TextView
+                    android:id="@+id/tv_defalut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#fffe8000"
+                    android:textSize="29sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll1"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="答对题数"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="全站平均分"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="击败考生"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tv_totle_mnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_tinum"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="19dp"
+            android:text="答题卡"
+            android:textColor="#2A2A2A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_mulu_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_tinum"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:drawablePadding="7dp"
+            android:text="错误"
+            android:textColor="#ff2a2a2a"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/mulu_error" />
+
+        <TextView
+            android:id="@+id/tv_mulu_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_tinum"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_toStartOf="@id/tv_mulu_error"
+            android:drawablePadding="7dp"
+            android:text="正确"
+            android:textColor="#ff2a2a2a"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/mulu_right" />
+
+        <TextView
+            android:id="@+id/tv_mulu_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_tinum"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_toStartOf="@id/tv_mulu_right"
+            android:drawablePadding="7dp"
+            android:text="未答"
+            android:textColor="#ff2a2a2a"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@mipmap/mulu_empty" />
+
         <View
-            android:id="@+id/view_two"
+            android:id="@+id/vew_b"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_below="@id/rl_redo"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="12dp"
+            android:layout_below="@id/tv_mulu_empty"
+            android:layout_marginTop="15dp"
             android:background="#F3F3F3" />
 
-        <TextView
-            android:id="@+id/tv_exercise_other"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mulu_result"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@id/view_two"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="61dp"
-            android:layout_marginEnd="51dp"
-            android:background="@drawable/login_phone_shape"
-            android:gravity="center"
-            android:text="练习其他专项"
-            android:textColor="#ffffffff"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/vew_b"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="65dp" />
 
-        <TextView
-            android:id="@+id/tv_find_error_questioin"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@id/tv_exercise_other"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="51dp"
-            android:background="@drawable/normal_shape"
-            android:gravity="center"
-            android:text="查看错题"
-            android:textColor="#FE8000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#FFFFFF">
 
+            <TextView
+                android:id="@+id/tv_error_anlisis"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/login_phone_shape"
+                android:gravity="center"
+                android:text="错题解析"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_all_anlisis"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/normal_shape"
+                android:gravity="center"
+                android:text="全部解析"
+                android:textColor="#FE8000"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

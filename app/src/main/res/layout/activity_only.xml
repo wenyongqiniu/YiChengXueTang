@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".activitys.questionbankactivitys.OnlyActivity">
+
+
+    <include
+        android:id="@+id/left_out"
+        layout="@layout/leftout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_commit_all"
+        android:layout_width="62dp"
+        android:layout_height="26dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/login_phone_shape"
+        android:gravity="center"
+        android:text="交卷"
+        android:textColor="#ffffffff"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/left_out"
+        android:background="#FFF2E2">
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:text="0/ 0"
+            android:textColor="#2A2A2A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_mulu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/tv_collect_question"
+            android:drawableStart="@mipmap/mulu"
+            android:drawablePadding="7dp"
+            android:text="目录"
+            android:textColor="#ff2a2a2a"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_collect_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"
+            android:drawablePadding="7dp"
+            android:gravity="center"
+            android:text="收藏"
+            android:textColor="#ff2a2a2a"
+            android:textSize="13sp"
+            app:drawableStartCompat="@mipmap/collect_question" />
+
+    </RelativeLayout>
+
+    <com.example.yichengxuetang.utils.CustomViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_tips"
+        android:layout_marginTop="25dp" />
+</RelativeLayout>
